@@ -197,7 +197,7 @@ local INLINE Pos insert_string_c(deflate_state *const s, const Pos str)
 
 local INLINE Pos insert_string(deflate_state *const s, const Pos str)
 {
-#if defined(_M_IX86) || defined(_M_AMD64)
+#if 0//defined(_M_IX86) || defined(_M_AMD64)
     if (x86_cpu_has_sse42) {
         return insert_string_sse(s, str);
     }
@@ -2136,7 +2136,7 @@ local block_state deflate_slow(s, flush)
 #if defined(M_ARM64)
             insert_string_acle(s, start_pos, insert_count);
 #else
-#if defined(_M_IX86) || defined(_M_AMD64)
+#if 0 //defined(_M_IX86) || defined(_M_AMD64)
             if (x86_cpu_has_sse42) {
                 for (uInt i = 0; i < insert_count; i++) {
                     insert_string_sse(s, start_pos);
