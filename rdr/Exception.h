@@ -22,6 +22,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#define strncat_s(dest, source, len) strncat_s(dest, sizeof(dest), source, len)
+
 namespace rdr {
 
   struct Exception {

@@ -44,6 +44,8 @@
 #include "common/win32_helpers.h"
 #include "vncOSVersion.h"
 
+#define strncat_s(dest, source, len) strncat_s(dest, sizeof(dest), source, len)
+
 #ifndef __GNUC__
 // [v1.0.2-jp1 fix]
 #pragma comment(lib, "imm32.lib")
@@ -621,11 +623,11 @@ vncMenu::GetIPAddrString(char *buffer, int buflen) {
     for (int i = 0; ph->h_addr_list[i]; i++) {
     	for (int j = 0; j < ph->h_length; j++) {
 			sprintf_s(digtxt, "%d.", (unsigned char) ph->h_addr_list[i][j]);
-			strncat_s(buffer, buflen, digtxt, (buflen-1)-strlen(buffer));
+			strncat_s(buffer, /*buflen,*/ digtxt, (buflen-1)-strlen(buffer));
 		}	
 		buffer[strlen(buffer)-1] = '\0';
 		if (ph->h_addr_list[i+1] != 0)
-			strncat_s(buffer, buflen, ", ", (buflen-1)-strlen(buffer));
+			strncat_s(buffer, /*buflen,*/ ", ", (buflen-1)-strlen(buffer));
     }
 
 #endif

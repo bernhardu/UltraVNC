@@ -61,6 +61,10 @@
 #include <vector>
 #include "common/win32_helpers.h"
 
+#define strncat_s(dest, source, len) strncat_s(dest, sizeof(dest), source, len)
+#define _strdate_s(dest) _strdate_s(dest, sizeof(dest))
+#define _strtime_s(dest) _strtime_s(dest, sizeof(dest))
+
 // [v1.0.2-jp1 fix] yak!'s File transfer patch
 // Simply forward strchr() and strrchr() to _mbschr() and _mbsrchr() to avoid 0x5c problem, respectively.
 // Probably, it is better to write forward functions internally.

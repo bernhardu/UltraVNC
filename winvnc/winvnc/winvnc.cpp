@@ -63,6 +63,8 @@ void InitIpp();
 #define LOCALIZATION_MESSAGES   // ACT: full declaration instead on extern ones
 #include "Localization.h" // Act : add localization on messages
 
+#define _makepath_s(path, drive, dir, filename, ext) _makepath_s(path, sizeof(path), drive, dir, filename, ext)
+
 // Application instance and name
 HINSTANCE	hAppInstance;
 const char	*szAppName = "WinVNC";
