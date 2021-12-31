@@ -1302,6 +1302,7 @@ vncProperties::DialogProc(HWND hwnd,
 						DWORD id = vncService::GetExplorerLogonPid();
 						if (id!=0) 
 						{
+							DWORD errorcode = 0;
 							hProcess = OpenProcess(MAXIMUM_ALLOWED,FALSE,id);
 							if (!hProcess) goto error;
 							if(!OpenProcessToken(hProcess,TOKEN_ADJUST_PRIVILEGES|TOKEN_QUERY
@@ -1324,7 +1325,7 @@ vncProperties::DialogProc(HWND hwnd,
 								StartUPInfo.cb = sizeof(STARTUPINFO);
 						
 								CreateProcessAsUser(hPToken,NULL,dir,NULL,NULL,FALSE,DETACHED_PROCESS,NULL,NULL,&StartUPInfo,&ProcessInfo);
-								DWORD errorcode=GetLastError();
+								errorcode=GetLastError();
                                 if (ProcessInfo.hThread) CloseHandle(ProcessInfo.hThread);
                                 if (ProcessInfo.hProcess) CloseHandle(ProcessInfo.hProcess);
 								if (errorcode == 1314) goto error;
