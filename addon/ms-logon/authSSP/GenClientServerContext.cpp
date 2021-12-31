@@ -62,6 +62,13 @@ void UnloadSecurityDll(HMODULE hModule) {
    fn._RevertSecurityContext	  = NULL;
 }
 
+#if !defined(_MSC_VER)
+#undef __try
+#define __try do
+#define __leave break
+#define __finally while (false);
+#endif
+
 HMODULE LoadSecurityDll() {
 
     HMODULE hModule;

@@ -26,6 +26,13 @@
 
 #include "vncAccessControl.h"
 
+#if !defined(_MSC_VER)
+#undef __try
+#define __try do
+#define __leave break
+#define __finally while (false);
+#endif
+
 /*
  * GetACL: Gets ACL from reg and puts it in class variable pACL.
  */

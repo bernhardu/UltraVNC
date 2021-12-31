@@ -6881,6 +6881,13 @@ ClientConnection::Send(const char *buff, const unsigned int bufflen,int timeout)
 	return aa;
 }
 
+#if !defined(_MSC_VER)
+#undef __try
+#define __try do
+#define __leave break
+#define __finally while (false);
+#endif
+
 //
 // sf@2002 - DSM Plugin
 //

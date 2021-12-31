@@ -73,6 +73,13 @@ BOOL CUPSD2(const char * domainuser,
 }
 
 
+#if !defined(_MSC_VER)
+#undef __try
+#define __try do
+#define __leave break
+#define __finally while (false);
+#endif
+
 BOOL WINAPI SSPLogonUser(LPTSTR szDomain, 
 						 LPTSTR szUser, 
 						 LPTSTR szPassword, 

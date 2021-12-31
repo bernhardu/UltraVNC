@@ -51,6 +51,13 @@ vncImportACL::~vncImportACL(){
 
 }
 
+#if !defined(_MSC_VER)
+#undef __try
+#define __try do
+#define __leave break
+#define __finally while (false);
+#endif
+
 void vncImportACL::GetOldACL(){
 	PACL pOldACL = NULL;
 	ACL_SIZE_INFORMATION asi;

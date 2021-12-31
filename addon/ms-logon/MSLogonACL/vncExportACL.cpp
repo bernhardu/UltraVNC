@@ -29,6 +29,13 @@
 #include <tchar.h>
 #include "vncExportACL.h"
 
+#if !defined(_MSC_VER)
+#undef __try
+#define __try do
+#define __leave break
+#define __finally while (false);
+#endif
+
 // Get ACL from regkey HKLM\Software\ORL\WinVNC3\ACL
 bool vncExportACL::GetACL(PACL *pACL){
 	HKEY hk = NULL; 
