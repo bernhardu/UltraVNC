@@ -62,7 +62,7 @@ SessionDialog::SessionDialog(VNCOptions* pOpt, ClientConnection* pCC, CDSMPlugin
 	/////////////////////////////////////////////////
 	TCHAR tmphost2[256];
 	_tcscpy_s(m_proxyhost, m_pOpt->m_proxyhost);
-	if (strcmp(m_proxyhost, "") != NULL) {
+	if (strcmp(m_proxyhost, "") != 0) {
 		_tcscat_s(m_proxyhost, ":");
 		_tcscat_s(m_proxyhost, 256, _itoa(m_pOpt->m_proxyport, tmphost2, 10));
 	}
@@ -538,7 +538,7 @@ void SessionDialog::InitDlgProc(bool loadhost, bool initMruNeeded)
 	}
 	TCHAR tmphost[256];
 	TCHAR tmphost2[256];
-	if (strcmp(m_proxyhost, "") != NULL) {
+	if (strcmp(m_proxyhost, "") != 0) {
 		_tcscpy_s(tmphost, m_proxyhost);
 		_tcscat_s(tmphost, ":");
 		_tcscat_s(tmphost, 256, _itoa(m_proxyport, tmphost2, 10));

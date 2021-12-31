@@ -633,7 +633,7 @@ vncMenu::GetIPAddrString(char *buffer, int buflen) {
 	{
 		if (old_buflen!=0)//first time old_buflen=0
 		{
-			if (strcmp(buffer,old_buffer)!=NULL) //ip changed
+			if (strcmp(buffer,old_buffer)!=0) //ip changed
 			{
 				vnclog.Print(LL_INTERR, VNCLOG("IP interface change detected %s %s\n"),buffer,old_buffer);
 				if (m_server->SockConnected())

@@ -702,7 +702,7 @@ void ClientConnection::DoConnection(bool reconnect)
 	havetobekilled=true;
 	// Connect if we're not already connected
 	if (m_sock == INVALID_SOCKET)
-		if (strcmp(m_proxyhost,"") !=NULL && m_fUseProxy)
+		if (strcmp(m_proxyhost,"") !=0 && m_fUseProxy)
 			ConnectProxy();
 		else
 			Connect();
@@ -712,7 +712,7 @@ void ClientConnection::DoConnection(bool reconnect)
 	SetDSMPluginStuff(); // The Plugin is now activated BEFORE the protocol negociation
 						 // so ALL the communication data travel through the DSMPlugin
 
-	if (strcmp(m_proxyhost,"")!=NULL && m_fUseProxy)
+	if (strcmp(m_proxyhost,"")!=0 && m_fUseProxy)
 		NegotiateProxy();
 
 	NegotiateProtocolVersion();
@@ -2783,7 +2783,7 @@ void ClientConnection::NegotiateProxy()
 	::ZeroMemory(tmphost, sizeof(tmphost));
 	::ZeroMemory(tmphost2, sizeof(tmphost2));
 	_tcscpy_s(tmphost,m_host);
-	if (strcmp(tmphost,"")!=NULL)
+	if (strcmp(tmphost,"")!=0)
 	{
 	_tcscat_s(tmphost,":");
 	_tcscat_s(tmphost, MAX_HOST_NAME_LEN, _itoa(m_port,tmphost2, 10));
@@ -5407,12 +5407,12 @@ void* ClientConnection::run_undetached(void* arg) {
 			// m_pFileTransfer->m_fFileTransferRunning = false;
 			// m_pTextChat->m_fTextChatRunning = false;
 			// throw QuietException(e.str());
-			if ((strcmp(e.str(),"rdr::EndOfStream: read")==NULL) && !m_bClosedByUser)
+			if ((strcmp(e.str(),"rdr::EndOfStream: read")==0) && !m_bClosedByUser)
 			{
 				WarningException w(sz_L94,200);
                // w.Report();
 			}
-			else if ((strcmp(e.str(),"rdr::SystemException: read: Unknown error (10054)")==NULL) && !m_bClosedByUser)
+			else if ((strcmp(e.str(),"rdr::SystemException: read: Unknown error (10054)")==0) && !m_bClosedByUser)
 			{
 				//ErrorException w(sz_L94,200);
 
