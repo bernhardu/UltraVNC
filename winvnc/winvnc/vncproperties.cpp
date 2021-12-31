@@ -40,7 +40,7 @@
 #include "vncpasswd.h"
 #include "vncOSVersion.h"
 #include "common/win32_helpers.h"
-#include "vncConnDialog.h"
+#include "vncconndialog.h"
 
 #include "Localization.h" // ACT : Add localization on messages
 

@@ -42,7 +42,7 @@
 #include "vncmenu.h"
 #include "HideDesktop.h"
 #include "common/win32_helpers.h"
-#include "vncosversion.h"
+#include "vncOSVersion.h"
 
 #ifndef __GNUC__
 // [v1.0.2-jp1 fix]

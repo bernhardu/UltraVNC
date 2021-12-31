@@ -1,6 +1,6 @@
 #include "cadthread.h"
 #include "vncservice.h"
-#include "localization.h"
+#include "Localization.h"
 
 vncCad::vncCad()
 {
