@@ -26,8 +26,6 @@
 
 extern jmp_buf dll_error_return;
 
-extern HANDLE hInst;        /* current instance */
-
 int win_fprintf(zvoid *pG, FILE *file, unsigned int, char far *);
 #endif
 
