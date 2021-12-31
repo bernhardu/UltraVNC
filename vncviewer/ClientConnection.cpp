@@ -3303,7 +3303,7 @@ void ClientConnection::AuthSecureVNCPlugin_old()
 					//adzm 2010-05-12 - passphrase
 					ad.m_bPassphraseMode = bPassphraseRequired;
 
-					if (ad.DoDialog(false,false,true))
+					if (ad.DoDialog(false, "host", 0))
 					{
 						strncpy_s(passwd, ad.m_passwd,254);
 						if (!bPassphraseRequired && strlen(passwd) > 8) {
