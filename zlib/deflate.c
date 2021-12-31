@@ -2131,7 +2131,7 @@ local block_state deflate_slow(s, flush)
             s->lookahead -= s->prev_length-1;
 
             uInt string_count = s->prev_length - 2;
-            uInt insert_count = min(string_count, max_insert - s->strstart);
+            uInt insert_count = MIN(string_count, max_insert - s->strstart);
             uInt start_pos = s->strstart + 1;
 #if defined(M_ARM64)
             insert_string_acle(s, start_pos, insert_count);
