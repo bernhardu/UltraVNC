@@ -22,11 +22,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////
 #include "stdhdrs.h"
-#include "vncviewer.h"
-#include "SessionDialog.h"
 #include <shlobj.h>
 #include <direct.h>
 #include <fstream>
+#include "vncviewer.h"
+#include "SessionDialog.h"
+
 extern char sz_K1[64];
 extern char sz_K2[64];
 extern bool g_disable_sponsor;

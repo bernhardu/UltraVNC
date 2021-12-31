@@ -1,6 +1,5 @@
 #include "stdhdrs.h"
 #include "Snapshot.h"
-#include "vncviewer.h"
 #include <windows.h>
 #include <string>
 #include <shlobj.h>
@@ -8,6 +7,7 @@
 #include <sstream>
 #include "common/win32_helpers.h"
 #include <gdiplus.h>
+#include "vncviewer.h"
 
 #pragma comment( lib, "gdiplus" )
 
