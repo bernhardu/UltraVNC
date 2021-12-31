@@ -6739,13 +6739,19 @@ void ClientConnection::WriteTransformed(char *buf, int bytes, CARD8 msgType, boo
 //adzm 2010-09
 void ClientConnection::WriteExact(char *buf, int bytes, CARD8 msgType)
 {
+#if defined(_MSC_VER)
 	__try {
+#endif
 		EnterCriticalSection(&crit);
 		WriteTransformed(buf, bytes, msgType, false);
+#if defined(_MSC_VER)
 	}
 	__finally {
+#endif
 		LeaveCriticalSection(&crit);
+#if defined(_MSC_VER)
 	}
+#endif
 }
 
 //adzm 2010-09
