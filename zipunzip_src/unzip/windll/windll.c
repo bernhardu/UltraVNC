@@ -53,7 +53,7 @@
 #endif
 
 HANDLE hwildZipFN;
-HANDLE hInst;               /* current instance */
+static HANDLE hInst;               /* current instance */
 HANDLE hDCL;
 int fNoPrinting = 0;
 extern jmp_buf dll_error_return;
