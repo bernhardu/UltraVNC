@@ -35,7 +35,7 @@
 #endif // !defined(AFX_STDAFX_H__A9DB83DB_A9FD_11D0_BFD1_444553540000__INCLUDED_)
 #include <time.h>
 HWND hwnd;
-HINSTANCE hInst;
+static HINSTANCE hInst;
 #ifndef LWA_COLORKEY
 # define LWA_COLORKEY 1
 #endif

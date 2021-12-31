@@ -80,8 +80,8 @@ BOOL g_bSaclPrivilege = FALSE;      /* for local set sacl operations, only when
    be called by many threads which are processing a variety of input/output
    volumes, since lock contention and stale data may become a bottleneck. */
 
-VOLUMECAPS g_VolumeCaps;
-CRITICAL_SECTION VolumeCapsLock;
+extern VOLUMECAPS g_VolumeCaps;
+extern CRITICAL_SECTION VolumeCapsLock;
 
 
 static BOOL Initialize(VOID)
