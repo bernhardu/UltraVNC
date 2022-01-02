@@ -27,6 +27,9 @@
 #include <wtsapi32.h>
 #include "common/win32_helpers.h"
 #include "inifile.h"
+#ifdef __MINGW32__
+#define SERVICE_CONTROL_PRESHUTDOWN 0xf
+#endif
 
 static void WINAPI service_main(DWORD, LPTSTR *);
 static void WINAPI control_handler(DWORD controlCode);
