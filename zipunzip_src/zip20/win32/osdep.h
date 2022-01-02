@@ -40,7 +40,7 @@
 #ifndef _MBCS
 #  define _MBCS
 #endif
-#if defined(__CYGWIN__)
+#if defined(__CYGWIN__) || defined(__MINGW32__)
 #  undef _MBCS
 #endif
 
