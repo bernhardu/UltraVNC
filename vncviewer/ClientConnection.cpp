@@ -7711,11 +7711,24 @@ LRESULT CALLBACK ClientConnection::GTGBS_SendCustomKey_proc(HWND Dlg, UINT iMsg,
 	return 0;
 }
 
+class recursecounter {
+public:
+    recursecounter(int *cnt) { m_cnt = cnt; (*m_cnt)++; };
+    ~recursecounter() { (*m_cnt)--; };
+private:
+    int* m_cnt;
+};
+
+static int recursion;
+
 //
 // Process windows messages
 //
 LRESULT CALLBACK ClientConnection::WndProc(HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 {
+    recursecounter yyy(&recursion);
+    for (int xxx=0; xxx < recursion; xxx++) fprintf(stderr, " ");
+    fprintf(stderr, "hwnd=0x%x iMsg=%d\n", hwnd, iMsg);
      ClientConnection *_this= (ClientConnection*)helper::SafeGetWindowUserData<ClientConnection>(hwnd);
 	 if( iMsg==WM_CREATE )
 		 {
@@ -10072,6 +10085,7 @@ void ClientConnection::Scrollbar_RecalculateSize(HWND hwnd)
 		else
 			rect.bottom = min(rect.bottom, rect.top + (m_fullwinheight + hScrollSize));
 
+		fprintf(stderr, "before SetWindowPos hwnd=0x%x left=%d top=%d right-left=%d bottom-top=%d\n", hwnd, rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top);
 		SetWindowPos(hwnd, NULL, rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top, SWP_NOZORDER | SWP_NOMOVE);
 	}
 }
