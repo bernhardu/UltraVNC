@@ -98,6 +98,14 @@ void Shellexecuteforuiaccess();
 void Secure_Plugin_elevated(char *szPlugin);
 void Secure_Plugin(char *szPlugin);
 
+#if defined(__MINGW32__)
+template <size_t size>
+errno_t __cdecl _makepath_s(char (&_PathResult)[size], const char *_Drive, const char *_Dir, const char *_Filename, const char *_Ext)
+{
+    return _makepath_s(_PathResult, size, _Drive, _Dir, _Filename, _Ext);
+}
+#endif
+
 //HACK to use name in autoreconnect from service with dyn dns
 char dnsname[255];
 extern bool PreConnect;

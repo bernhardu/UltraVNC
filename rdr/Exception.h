@@ -22,6 +22,14 @@
 #include <stdio.h>
 #include <string.h>
 
+#if defined(__MINGW32__)
+template <size_t size>
+errno_t __cdecl strncat_s(char (&_Dst)[size], const char *_Src, size_t _MaxCount)
+{
+    return strncat_s(_Dst, size, _Src, _MaxCount);
+}
+#endif
+
 namespace rdr {
 
   struct Exception {

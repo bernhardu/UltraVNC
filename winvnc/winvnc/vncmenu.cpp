@@ -73,6 +73,14 @@ void Open_forum();
 //HACK to use name in autoreconnect from service with dyn dns
 extern char dnsname[255];
 
+#if defined(__MINGW32__)
+template <size_t size>
+errno_t __cdecl strncat_s(char (&_Dst)[size], const char *_Src, size_t _MaxCount)
+{
+    return strncat_s(_Dst, size, _Src, _MaxCount);
+}
+#endif
+
 BOOL pfnDwmEnableCompositiond = FALSE;
 static inline VOID DisableAero(VOID)
 {
