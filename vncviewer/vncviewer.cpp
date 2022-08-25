@@ -23,6 +23,7 @@
 ////////////////////////////////////////////////////////////////////////////
  
 
+#define NOMINMAX 1
 
 #include "stdhdrs.h"
 #include "vncviewer.h"
@@ -817,8 +818,8 @@ void CentreWindow(HWND hwnd)
 	int winwidth = winrect.right - winrect.left;
 	int winheight = winrect.bottom - winrect.top;
 	// Make sure it's not bigger than the work area
-	winwidth = min(winwidth, workwidth);
-	winheight = min(winheight, workheight);
+	winwidth = std::min(winwidth, workwidth);
+	winheight = std::min(winheight, workheight);
 
 	// Now centre it
 	SetWindowPos(hwnd, 

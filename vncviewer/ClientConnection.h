@@ -80,14 +80,6 @@ class vnctouch;
 #endif
 extern const UINT FileTransferSendPacketMessage;
 
-#ifndef max
-#define max(a,b)            (((a) > (b)) ? (a) : (b))
-#endif
-
-#ifndef min
-#define min(a,b)            (((a) < (b)) ? (a) : (b))
-#endif
-
 //adzm 2010-09
 // ethernet packet 1500 - 40 tcp/ip header - 8 PPPoE info
 #define G_SENDBUFFER 2904
