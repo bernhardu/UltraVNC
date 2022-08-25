@@ -3842,13 +3842,13 @@ void ClientConnection::SizeWindow(bool noPosChange, bool noSizeChange)
 			horizontalRatio = (int)(((workwidth - dx) * 100) / uni_screenWidth);
 			verticalRatio = (int)(((workheight - dy) * 100) / uni_screenHeight);
 		}
-		int Ratio= min(verticalRatio, horizontalRatio);
+		int Ratio= std::min(verticalRatio, horizontalRatio);
 		
 		// Option "Limit" AutoScaling to Screen DPI
 		if (m_opts->m_fAutoScalingLimit)
 		{
 			int Limit = (m_Dpi * 100) / 96;
-			Ratio = min(Ratio, Limit);
+			Ratio = std::min(Ratio, Limit);
 		}
 
 		// Option "Even" only use 100,200,300%
@@ -3911,8 +3911,8 @@ void ClientConnection::SizeWindow(bool noPosChange, bool noSizeChange)
 	m_fullwinwidth = fullwinrect.right - fullwinrect.left;
 	m_fullwinheight = (fullwinrect.bottom - fullwinrect.top);
 
-	m_winwidth  = min(m_fullwinwidth,  workwidth);
-	m_winheight = min(m_fullwinheight, workheight);
+	m_winwidth  = std::min(m_fullwinwidth,  workwidth);
+	m_winheight = std::min(m_fullwinheight, workheight);
 
 	//SetWindowPos(m_hwnd, HWND_TOP,
 	if (m_opts->m_ShowToolbar)
@@ -3943,13 +3943,13 @@ void ClientConnection::SizeWindow(bool noPosChange, bool noSizeChange)
 	m_fullwinwidth = fullwinrect.right - fullwinrect.left;
 	m_fullwinheight = (fullwinrect.bottom - fullwinrect.top);
 
-	//m_winwidth  = min(m_fullwinwidth+16,  workwidth);
-	m_winwidth  = min(m_fullwinwidth,  workwidth);
-	//m_winheight = min(m_fullwinheight+m_TBr.bottom + m_TBr.top+16 , workheight);
+	//m_winwidth  = std::min(m_fullwinwidth+16,  workwidth);
+	m_winwidth  = std::min(m_fullwinwidth,  workwidth);
+	//m_winheight = std::min(m_fullwinheight+m_TBr.bottom + m_TBr.top+16 , workheight);
 	if (m_opts->m_ShowToolbar)
-		m_winheight = min(m_fullwinheight + m_TBr.bottom + m_TBr.top , workheight);
+		m_winheight = std::min<int>(m_fullwinheight + m_TBr.bottom + m_TBr.top , workheight);
 	else
-		m_winheight = min(m_fullwinheight, workheight);
+		m_winheight = std::min(m_fullwinheight, workheight);
 	int temp_x = 0;
 	int temp_y = 0;
 	int temp_w = 0;
@@ -4615,10 +4615,10 @@ bool ClientConnection::ScrollScreen(int dx, int dy, bool absolute)
 		dy = dy - m_vScrollPos;
 	}
 	else{
-		dx = max(dx, -m_hScrollPos);
-		dx = min(dx, m_hScrollMax - (m_cliwidth)-m_hScrollPos);
-		dy = max(dy, -m_vScrollPos);
-		dy = min(dy, m_vScrollMax - (m_cliheight)-m_vScrollPos);
+		dx = std::max(dx, -m_hScrollPos);
+		dx = std::min(dx, m_hScrollMax - (m_cliwidth)-m_hScrollPos);
+		dy = std::max(dy, -m_vScrollPos);
+		dy = std::min(dy, m_vScrollMax - (m_cliheight)-m_vScrollPos);
 	}
 	if (dx || dy) {
 		m_hScrollPos += dx;
@@ -8646,14 +8646,14 @@ LRESULT CALLBACK ClientConnection::WndProc(HWND hwnd, UINT iMsg, WPARAM wParam, 
 							int uni_screenWidth =  _this->m_si.framebufferWidth;
 							int uni_screenHeight =  _this->m_si.framebufferHeight;
 
-							_this->m_cliwidth = min( (int)(rect.right - rect.left),
-													 (int)(uni_screenWidth * _this->m_opts->m_scale_num / _this->m_opts->m_scale_den));
+							_this->m_cliwidth = std::min( (int)(rect.right - rect.left),
+														  (int)(uni_screenWidth * _this->m_opts->m_scale_num / _this->m_opts->m_scale_den));
 							if (_this->m_opts->m_ShowToolbar)
-								_this->m_cliheight = min( (int)rect.bottom - rect.top ,
-														  (int)uni_screenHeight * _this->m_opts->m_scale_num / _this->m_opts->m_scale_den + _this->m_TBr.bottom);
+								_this->m_cliheight = std::min( (int)rect.bottom - rect.top ,
+															   (int)uni_screenHeight * _this->m_opts->m_scale_num / _this->m_opts->m_scale_den + _this->m_TBr.bottom);
 							else
-								_this->m_cliheight = min( (int)(rect.bottom - rect.top) ,
-														  (int)(uni_screenHeight * _this->m_opts->m_scale_num / _this->m_opts->m_scale_den));
+								_this->m_cliheight = std::min( (int)(rect.bottom - rect.top) ,
+															   (int)(uni_screenHeight * _this->m_opts->m_scale_num / _this->m_opts->m_scale_den));
 
 							_this->m_hScrollMax = (int)_this->m_si.framebufferWidth * _this->m_opts->m_scale_num / _this->m_opts->m_scale_den;
 							if (_this->m_opts->m_ShowToolbar)
@@ -8666,16 +8666,16 @@ LRESULT CALLBACK ClientConnection::WndProc(HWND hwnd, UINT iMsg, WPARAM wParam, 
 
 
 							int newhpos, newvpos;
-							newhpos = max(0,
-										  min(_this->m_hScrollPos,
-											  _this->m_hScrollMax - max(_this->m_cliwidth, 0)
-											 )
-										 );
-							newvpos = max(0,
-										  min(_this->m_vScrollPos,
-											  _this->m_vScrollMax - max(_this->m_cliheight, 0)
-											 )
-										 );
+							newhpos = std::max(0,
+											   std::min(_this->m_hScrollPos,
+														_this->m_hScrollMax - std::max(_this->m_cliwidth, 0)
+													   )
+											  );
+							newvpos = std::max(0,
+											   std::min(_this->m_vScrollPos,
+														_this->m_vScrollMax - std::max(_this->m_cliheight, 0)
+													   )
+											  );
 
 							ScrollWindowEx(_this->m_hwndcn,
 										   _this->m_hScrollPos - newhpos,
@@ -10083,12 +10083,12 @@ void ClientConnection::Scollbar_wm_sizing(WPARAM wParam, LPARAM lParam)
 	case WMSZ_RIGHT:
 	case WMSZ_TOPRIGHT:
 	case WMSZ_BOTTOMRIGHT:
-		lprc->right = min(lprc->right, lprc->left + (m_fullwinwidth + vSchrollSize) + 1);
+		lprc->right = std::min(lprc->right, lprc->left + (m_fullwinwidth + vSchrollSize) + 1);
 		break;
 	case WMSZ_LEFT:
 	case WMSZ_TOPLEFT:
 	case WMSZ_BOTTOMLEFT:
-		lprc->left = max(lprc->left, lprc->right - (m_fullwinwidth + vSchrollSize));
+		lprc->left = std::max(lprc->left, lprc->right - (m_fullwinwidth + vSchrollSize));
 		break;
 	}
 
@@ -10097,17 +10097,17 @@ void ClientConnection::Scollbar_wm_sizing(WPARAM wParam, LPARAM lParam)
 	case WMSZ_TOPLEFT:
 	case WMSZ_TOPRIGHT:
 		if (m_opts->m_ShowToolbar)
-			lprc->top = max(lprc->top, lprc->bottom - (m_fullwinheight + hScrollSize) - m_TBr.bottom);
+			lprc->top = std::max(lprc->top, lprc->bottom - (m_fullwinheight + hScrollSize) - m_TBr.bottom);
 		else
-			lprc->top = max(lprc->top, lprc->bottom - (m_fullwinheight + hScrollSize));
+			lprc->top = std::max(lprc->top, lprc->bottom - (m_fullwinheight + hScrollSize));
 		break;
 	case WMSZ_BOTTOM:
 	case WMSZ_BOTTOMLEFT:
 	case WMSZ_BOTTOMRIGHT:
 		if (m_opts->m_ShowToolbar)
-			lprc->bottom = min(lprc->bottom, lprc->top + (m_fullwinheight + hScrollSize) + m_TBr.bottom);
+			lprc->bottom = std::min(lprc->bottom, lprc->top + (m_fullwinheight + hScrollSize) + m_TBr.bottom);
 		else
-			lprc->bottom = min(lprc->bottom, lprc->top + (m_fullwinheight + hScrollSize));
+			lprc->bottom = std::min(lprc->bottom, lprc->top + (m_fullwinheight + hScrollSize));
 		break;
 	}
 }
@@ -10119,18 +10119,18 @@ void ClientConnection::Scrollbar_RecalculateSize(HWND hwnd)
 		GetWindowRect(hwnd, &rect);
 		int hScrollSize = SB_HORZ_BOOL ? GetSystemMetrics(SM_CYHSCROLL) : 0;
 		int vSchrollSize = SB_VERT_BOOL ? GetSystemMetrics(SM_CXVSCROLL) : 0;
-		rect.right = min(rect.right, rect.left + (m_fullwinwidth + vSchrollSize) + 1);
-		rect.left = max(rect.left, rect.right - (m_fullwinwidth + vSchrollSize));
+		rect.right = std::min(rect.right, rect.left + (m_fullwinwidth + vSchrollSize) + 1);
+		rect.left = std::max(rect.left, rect.right - (m_fullwinwidth + vSchrollSize));
 
 		if (m_opts->m_ShowToolbar)
-			rect.top = max(rect.top, rect.bottom - (m_fullwinheight + hScrollSize) - m_TBr.bottom);
+			rect.top = std::max(rect.top, rect.bottom - (m_fullwinheight + hScrollSize) - m_TBr.bottom);
 		else
-			rect.top = max(rect.top, rect.bottom - (m_fullwinheight + hScrollSize));
+			rect.top = std::max(rect.top, rect.bottom - (m_fullwinheight + hScrollSize));
 
 		if (m_opts->m_ShowToolbar)
-			rect.bottom = min(rect.bottom, rect.top + (m_fullwinheight + hScrollSize) + m_TBr.bottom);
+			rect.bottom = std::min(rect.bottom, rect.top + (m_fullwinheight + hScrollSize) + m_TBr.bottom);
 		else
-			rect.bottom = min(rect.bottom, rect.top + (m_fullwinheight + hScrollSize));
+			rect.bottom = std::min(rect.bottom, rect.top + (m_fullwinheight + hScrollSize));
 
 		SetWindowPos(hwnd, NULL, rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top, SWP_NOZORDER | SWP_NOMOVE);
 	}
