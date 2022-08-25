@@ -22,6 +22,10 @@
 #include <stdio.h>
 #include <string.h>
 
+#if defined(__MINGW32__) && !defined(__llvm__)
+  __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2(errno_t, strncat_s, char, _Dst, const char *, _Src, size_t, _MaxCount)
+#endif
+
 namespace rdr {
 
   struct Exception {

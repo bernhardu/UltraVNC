@@ -177,6 +177,14 @@ typedef BOOL (WINAPI *PGETDISKFREESPACEEX)(LPCSTR,PULARGE_INTEGER, PULARGE_INTEG
 
 static FileTransfer* g_FileTransferSingleton = NULL;
 
+#if defined(__MINGW32__) && !defined(__llvm__)
+  __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_2(errno_t, strncat_s, char, _Dst, const char *, _Src, size_t, _MaxCount)
+#endif
+#if defined(__MINGW32__)
+  __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_0(errno_t, _strdate_s, char, _Str)
+  __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_0(errno_t, _strtime_s, char, _Str)
+#endif
+
 HWND hFTWnd = 0;
 static std::string make_temp_filename(const char *szRemoteFileName)
 {

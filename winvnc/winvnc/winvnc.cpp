@@ -97,6 +97,10 @@ void Shellexecuteforuiaccess();
 void Secure_Plugin_elevated(char *szPlugin);
 void Secure_Plugin(char *szPlugin);
 
+#if defined(__MINGW32__)
+  __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_4(errno_t,_makepath_s,char,_PathResult,const char*,_Drive,const char*,_Dir,const char*,_Filename,const char*,_Ext)
+#endif
+
 //HACK to use name in autoreconnect from service with dyn dns
 char dnsname[255];
 extern bool PreConnect;
