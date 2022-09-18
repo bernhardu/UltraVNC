@@ -374,7 +374,7 @@
       <Command>cl /nologo /MTd /Fo.\x64\Debug\ /Fd.\x64\Debug\ /c buildtime.cpp</Command>
     </PreLinkEvent>
     <Link>
-      <AdditionalDependencies>comctl32.lib;winmm.lib;ws2_32.lib;rdr.lib;libjpeg-turbo-win.lib;zlibstat.lib;liblzma.lib;omnithread.lib;zip32.lib;unz32lib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>comctl32.lib;winmm.lib;ws2_32.lib;rdr.lib;libjpeg-turbo-win.lib;zlib1d.lib;liblzma.lib;omnithread.lib;zip32.lib;unz32lib.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <GenerateMapFile>true</GenerateMapFile>
@@ -383,7 +383,7 @@
       <DataExecutionPrevention>
       </DataExecutionPrevention>
       <TargetMachine>MachineX64</TargetMachine>
-      <AdditionalLibraryDirectories>..\vncviewer\x64\Debug;..\winvnc\Debug\x64\liblzma;..\rdr\x64\Debug;..\zlib\contrib\vstudio\vc15\x64\ZlibStatDebug;..\zipunzip_src\zip20\windll\visualc\lib\x64\Debug;..\zipunzip_src\unzip\windll\vc6\lib\x64\Debug;..\winvnc\omnithread\x64\Debug;..\winvnc\x64\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\vncviewer\x64\Debug;..\vncviewer\Debug\x64\liblzma;..\rdr\x64\Debug;..\zlib\lib\x64;..\zipunzip_src\zip20\windll\visualc\lib\x64\Debug;..\zipunzip_src\unzip\windll\vc6\lib\x64\Debug;..\vncviewer\omnithread\x64\Debug;..\vncviewer\x64\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -439,7 +439,7 @@
       <DataExecutionPrevention>true</DataExecutionPrevention>
       <TargetMachine>MachineX86</TargetMachine>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <AdditionalLibraryDirectories>..\zlib\contrib\vstudio\vc15\x86\ZlibStatrelease_viewer;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\zlib\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -498,7 +498,7 @@ copy "$(OutDir)$(TargetName)$(TargetExt)" C:\Users\rudi\Desktop\git_ultravnc\Fil
       <DataExecutionPrevention>true</DataExecutionPrevention>
       <TargetMachine>MachineX86</TargetMachine>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <AdditionalLibraryDirectories>..\zlib\contrib\vstudio\vc15\x86\ZlibStatrelease_viewer;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\zlib\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -556,7 +556,7 @@ copy "$(OutDir)$(TargetName)$(TargetExt)" c:\uvnc\32\xp</Command>
       <DataExecutionPrevention>true</DataExecutionPrevention>
       <TargetMachine>MachineX86</TargetMachine>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <AdditionalLibraryDirectories>..\zlib\contrib\vstudio\vc15\x86\ZlibStatrelease_viewer;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\zlib\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -779,7 +779,7 @@ copy "$(OutDir)$(TargetName)$(TargetExt)" c:\uvnc\32\ipv6</Command>
     <Link>
       <AdditionalDependencies>comctl32.lib;winmm.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>.\x64\Release\;..\zlib\contrib\vstudio\vc15\x64\ZlibStatrelease_viewer;.\Release\x64\liblzma\;.\omnithread\x64\Release\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>.\x64\Release\;..\zlib\lib\x64;.\Release\x64\liblzma\;.\omnithread\x64\Release\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <RandomizedBaseAddress>true</RandomizedBaseAddress>
@@ -831,7 +831,7 @@ copy "$(OutDir)$(TargetName)$(TargetExt)" C:\Users\rudi\Desktop\git_ultravnc\Fil
     <Link>
       <AdditionalDependencies>comctl32.lib;winmm.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>.\x64\Release\;..\zlib\contrib\vstudio\vc15\x64\ZlibStatrelease_viewer;.\Release\x64\liblzma\;.\omnithread\x64\Release\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>.\x64\Release\;..\zlib\lib\x64;.\Release\x64\liblzma\;.\omnithread\x64\Release\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <RandomizedBaseAddress>true</RandomizedBaseAddress>
@@ -882,7 +882,7 @@ copy "$(OutDir)$(TargetName)$(TargetExt)" c:\uvnc\64\XP</Command>
     <Link>
       <AdditionalDependencies>comctl32.lib;winmm.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>.\x64\Release\;..\zlib\contrib\vstudio\vc15\x64\ZlibStatrelease_viewer;.\Release\x64\liblzma\;.\omnithread\x64\Release\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>.\x64\Release\;..\zlib\lib\x64;.\Release\x64\liblzma\;.\omnithread\x64\Release\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <RandomizedBaseAddress>true</RandomizedBaseAddress>
@@ -931,9 +931,9 @@ copy "$(OutDir)$(TargetName)$(TargetExt)" c:\uvnc\64\XP</Command>
       <Command>cl /nologo /MT /Fo.\x64\Release\ /Fd.\x64\Release\ /c buildtime.cpp</Command>
     </PreLinkEvent>
     <Link>
-      <AdditionalDependencies>comctl32.lib;winmm.lib;ws2_32.lib;rdr.lib;libjpeg-turbo-win.lib;zlibstat.lib;liblzma.lib;omnithread.lib;zip32.lib;unz32lib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>comctl32.lib;winmm.lib;ws2_32.lib;rdr.lib;libjpeg-turbo-win.lib;zlib1d.lib;liblzma.lib;omnithread.lib;zip32.lib;unz32lib.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>..\vncviewer\x64\Release;..\winvnc\Release\x64\liblzma;..\winvnc\x64\Release;..\zlib\contrib\vstudio\vc15\x64\ZlibStatRelease;..\zipunzip_src\zip20\windll\visualc\lib\x64\Release;..\zipunzip_src\unzip\windll\vc6\lib\x64\Release;..\vncviewer\omnithread\x64\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\vncviewer\x64\Release;..\winvnc\Release\x64\liblzma;..\winvnc\x64\Release;..\zlib\lib\x64;..\zipunzip_src\zip20\windll\visualc\lib\x64\Release;..\zipunzip_src\unzip\windll\vc6\lib\x64\Release;..\vncviewer\omnithread\x64\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <RandomizedBaseAddress>true</RandomizedBaseAddress>
