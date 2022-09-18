@@ -39,6 +39,7 @@
 #include <tchar.h>
 #include <windows.h>
 
+#if !defined(__MINGW32__)
 #include <natupnp.h>
 #include <comutil.h>
 
@@ -62,5 +63,6 @@ private:
 	IStaticPortMappingCollection* pSPMC; // pointer to the collection
 	IStaticPortMapping * pSPM;	// pointer to the port map
 };
+#endif
 
 #endif // UPNP_H
