@@ -96,3 +96,8 @@ rdr/.vs/
 *.ilk
 zipunzip_src/zip20/windll/visualc/lib/.vs/
 vncviewer/VTune Profiler Results/
+winvnc/vnchooks/x64/
+addon/ms-logon/authSSP/buildtime.h
+addon/ms-logon/MSLogonACL/buildtime.h
+addon/Debug/
+*.bsc
