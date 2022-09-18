@@ -1,6 +1,5 @@
 // upnp.cpp : Defines the entry point for the console application.
 //
-#if !defined(__MINGW32__)
 
 #include "stdafx.h"
 #include "log.h"
@@ -13,6 +12,7 @@
 #include <shlwapi.h>
 #pragma comment ( lib, "shlwapi" )
 
+#if !defined(__MINGW32__)
 
 
 
