@@ -398,7 +398,6 @@
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>./win;%(AdditionalIncludeDirectories);./simd/nasm</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;WITH_SIMD;%(PreprocessorDefinitions);</PreprocessorDefinitions>
-      <MinimalRebuild>true</MinimalRebuild>
       <ExceptionHandling>
       </ExceptionHandling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -418,7 +417,6 @@
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>./win;%(AdditionalIncludeDirectories);./simd/nasm</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;WITH_SIMD;%(PreprocessorDefinitions);</PreprocessorDefinitions>
-      <MinimalRebuild>true</MinimalRebuild>
       <ExceptionHandling>
       </ExceptionHandling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -441,7 +439,6 @@
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>./win;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_X64,;WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;WITH_SIMD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <MinimalRebuild>true</MinimalRebuild>
       <ExceptionHandling>
       </ExceptionHandling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -461,7 +458,6 @@
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>./win;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_X64,;WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;WITH_SIMD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <MinimalRebuild>true</MinimalRebuild>
       <ExceptionHandling>
       </ExceptionHandling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
