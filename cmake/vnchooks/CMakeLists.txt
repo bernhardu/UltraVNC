@@ -2,8 +2,10 @@ cmake_minimum_required(VERSION 3.1.0)
 
 project(vnchooks LANGUAGES C CXX RC)
 
-set(CMAKE_C_FLAGS "-g -O0 -Wno-write-strings")
-set(CMAKE_CXX_FLAGS "-g -O0 -Wno-write-strings -Wno-conversion-null")
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+  set(CMAKE_C_FLAGS "-g -O0 -Wno-write-strings")
+  set(CMAKE_CXX_FLAGS "-g -O0 -Wno-write-strings -Wno-conversion-null")
+endif()
 
 
 
@@ -17,4 +19,6 @@ foreach(file ${VNCVIEWER_SOURCES})
 endforeach(file)
 target_sources(vnchooks PRIVATE "${CMAKE_SOURCE_DIR}/../winvnc/vnchooks/vnchooks.rc")
 set_source_files_properties(${CMAKE_SOURCE_DIR}/../winvnc/vnchooks/vnchooks.rc LANGUAGE RC)
-set_source_files_properties(${CMAKE_SOURCE_DIR}/../winvnc/vnchooks/vnchooks.rc PROPERTIES COMPILE_FLAGS "-Ocoff")
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+  set_source_files_properties(${CMAKE_SOURCE_DIR}/../winvnc/vnchooks/vnchooks.rc PROPERTIES COMPILE_FLAGS "-Ocoff")
+endif()

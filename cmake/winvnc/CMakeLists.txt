@@ -2,8 +2,10 @@ cmake_minimum_required(VERSION 3.1.0)
 
 project(winvnc LANGUAGES C CXX RC)
 
-set(CMAKE_C_FLAGS "-g -O0 -Wno-write-strings")
-set(CMAKE_CXX_FLAGS "-g -O0 -Wno-write-strings -Wno-conversion-null")
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+  set(CMAKE_C_FLAGS "-g -O0 -Wno-write-strings")
+  set(CMAKE_CXX_FLAGS "-g -O0 -Wno-write-strings -Wno-conversion-null")
+endif()
 
 
 
@@ -112,12 +114,15 @@ foreach(file ${WINVNC_SOURCES})
 endforeach(file)
 target_sources(winvnc PRIVATE "${CMAKE_SOURCE_DIR}/../winvnc/winvnc/winvnc.rc")
 set_source_files_properties(${CMAKE_SOURCE_DIR}/../winvnc/winvnc/winvnc.rc LANGUAGE RC)
-set_source_files_properties(${CMAKE_SOURCE_DIR}/../winvnc/winvnc/winvnc.rc PROPERTIES COMPILE_FLAGS "-Ocoff")
-if( ${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64" )
-    target_compile_definitions(winvnc PRIVATE _X64 _WIN32_WINNT=0x601)
-else()
-    target_compile_definitions(winvnc PRIVATE _WIN32_WINNT=0x601)
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+  set_source_files_properties(${CMAKE_SOURCE_DIR}/../winvnc/winvnc/winvnc.rc PROPERTIES COMPILE_FLAGS "-Ocoff")
 endif()
+if( ${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64" OR ${CMAKE_SYSTEM_PROCESSOR} STREQUAL "AMD64")
+    target_compile_definitions(winvnc PRIVATE _X64 __WIN32__ _WINSTATIC)
+else()
+    target_compile_definitions(winvnc PRIVATE __WIN32__ _WINSTATIC)
+endif()
+#_WIN32_WINNT=0x601   was this really needed for mingw?
 target_link_libraries(winvnc
     libjpeg
     libomnithread_${PROJECT_NAME}
@@ -138,3 +143,4 @@ target_link_libraries(winvnc
     version
     ws2_32
 )
+set_target_properties(winvnc PROPERTIES WIN32_EXECUTABLE TRUE)

@@ -2,8 +2,10 @@ cmake_minimum_required(VERSION 3.1.0)
 
 project(libjpeg LANGUAGES C ASM_NASM)
 
-set(CMAKE_C_FLAGS "-g -O0 -Wno-write-strings")
-set(CMAKE_CXX_FLAGS "-g -O0 -Wno-write-strings -Wno-conversion-null")
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+  set(CMAKE_C_FLAGS "-g -O0 -Wno-write-strings")
+  set(CMAKE_CXX_FLAGS "-g -O0 -Wno-write-strings -Wno-conversion-null")
+endif()
 
 
 
@@ -67,7 +69,7 @@ foreach(file ${LIBJPEG_SOURCES})
     target_sources(libjpeg PRIVATE "${CMAKE_SOURCE_DIR}/../libjpeg-turbo-win/${file}")
 endforeach(file)
 
-if( ${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64" )
+if( ${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64" OR ${CMAKE_SYSTEM_PROCESSOR} STREQUAL "AMD64")
     set(LIBJPEGSIMD_DIR "x86_64")
     set(CMAKE_ASM_NASM_FLAGS "-DWIN64 -D__x86_64__")
     target_include_directories(libjpeg PRIVATE "${CMAKE_SOURCE_DIR}/../libjpeg-turbo-win/simd/x86_64")

@@ -2,7 +2,9 @@ cmake_minimum_required(VERSION 3.1.0)
 
 project(libjpeg LANGUAGES C)
 
-set(CMAKE_C_FLAGS "-g -O0 -Wno-write-strings")
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+  set(CMAKE_C_FLAGS "-g -O0 -Wno-write-strings")
+endif()
 
 
 
