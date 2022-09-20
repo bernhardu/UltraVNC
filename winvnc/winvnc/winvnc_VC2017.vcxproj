@@ -432,8 +432,6 @@
       <PreprocessorDefinitions>_DEBUG;__x86__;__WIN32__;WIN32;_WINDOWS;XMD_H;_WINSTATIC;_XZ;_USE_DESKTOPDUPLICATION;_RDPMODE;remIPV6STRICT;remIPV6V4;_WINSOCK_DEPRECATED_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <BrowseInformation>true</BrowseInformation>
-      <BrowseInformationFile>.\..\Debug/</BrowseInformationFile>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
@@ -479,8 +477,6 @@
       <PreprocessorDefinitions>_DEBUG;__x86__;__WIN32__;WIN32;_WINDOWS;XMD_H;_WINSTATIC;_XZ;_USE_DESKTOPDUPLICATION;_RDPMODE;remIPV6STRICT;remIPV6V4;_WINSOCK_DEPRECATED_NO_WARNINGS;SC_20;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <BrowseInformation>true</BrowseInformation>
-      <BrowseInformationFile>.\..\Debug/</BrowseInformationFile>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
@@ -526,8 +522,6 @@
       <PreprocessorDefinitions>_DEBUG;__x86__;__WIN32__;WIN32;_WINDOWS;XMD_H;_WINSTATIC;_CRT_SECURE_NO_WARNINGS;_X64;_XZ;_USE_DESKTOPDUPLICATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <BrowseInformation>true</BrowseInformation>
-      <BrowseInformationFile>.\..\Debug/</BrowseInformationFile>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -572,8 +566,6 @@
       <PreprocessorDefinitions>_DEBUG;__x86__;__WIN32__;WIN32;_WINDOWS;XMD_H;_WINSTATIC;_CRT_SECURE_NO_WARNINGS;_X64;_XZ;_USE_DESKTOPDUPLICATION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <BrowseInformation>true</BrowseInformation>
-      <BrowseInformationFile>.\..\Debug/</BrowseInformationFile>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
