@@ -2,8 +2,10 @@ cmake_minimum_required(VERSION 3.1.0)
 
 project(vncviewer LANGUAGES C CXX RC)
 
-set(CMAKE_C_FLAGS "-g -O0 -Wno-write-strings")
-set(CMAKE_CXX_FLAGS "-g -O0 -Wno-write-strings -Wno-conversion-null")
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+  set(CMAKE_C_FLAGS "-g -O0 -Wno-write-strings")
+  set(CMAKE_CXX_FLAGS "-g -O0 -Wno-write-strings -Wno-conversion-null")
+endif()
 
 
 
@@ -84,11 +86,13 @@ foreach(file ${VNCVIEWER_SOURCES})
 endforeach(file)
 target_sources(vncviewer PRIVATE "${CMAKE_SOURCE_DIR}/../vncviewer/res/vncviewer.rc")
 set_source_files_properties(${CMAKE_SOURCE_DIR}/../vncviewer/res/vncviewer.rc LANGUAGE RC)
-set_source_files_properties(${CMAKE_SOURCE_DIR}/../vncviewer/res/vncviewer.rc PROPERTIES COMPILE_FLAGS "-Ocoff")
-if( ${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64" )
-    target_compile_definitions(vncviewer PRIVATE _X64 _VIEWER)
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+  set_source_files_properties(${CMAKE_SOURCE_DIR}/../vncviewer/res/vncviewer.rc PROPERTIES COMPILE_FLAGS "-Ocoff")
+endif()
+if( ${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64" OR ${CMAKE_SYSTEM_PROCESSOR} STREQUAL "AMD64")
+    target_compile_definitions(vncviewer PRIVATE _X64 _VIEWER __WIN32__ _WINSTATIC)
 else()
-    target_compile_definitions(vncviewer PRIVATE _VIEWER)
+    target_compile_definitions(vncviewer PRIVATE _VIEWER __WIN32__ _WINSTATIC)
 endif()
 target_link_libraries(vncviewer
     libjpeg
@@ -107,3 +111,4 @@ target_link_libraries(vncviewer
     winmm
     ws2_32
 )
+set_target_properties(vncviewer PROPERTIES WIN32_EXECUTABLE TRUE)

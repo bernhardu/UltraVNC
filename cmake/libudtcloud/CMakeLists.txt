@@ -2,7 +2,9 @@ cmake_minimum_required(VERSION 3.1.0)
 
 project(libudtcloud LANGUAGES CXX)
 
-set(CMAKE_CXX_FLAGS "-g -O0 -Wno-write-strings -Wno-conversion-null")
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+  set(CMAKE_CXX_FLAGS "-g -O0 -Wno-write-strings -Wno-conversion-null")
+endif()
 
 
 

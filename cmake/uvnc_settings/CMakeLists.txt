@@ -2,8 +2,10 @@ cmake_minimum_required(VERSION 3.1.0)
 
 project(uvnc_settings LANGUAGES C CXX RC)
 
-set(CMAKE_C_FLAGS "-g -O0 -Wno-write-strings")
-set(CMAKE_CXX_FLAGS "-g -O0 -Wno-write-strings -Wno-conversion-null")
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+  set(CMAKE_C_FLAGS "-g -O0 -Wno-write-strings")
+  set(CMAKE_CXX_FLAGS "-g -O0 -Wno-write-strings -Wno-conversion-null")
+endif()
 
 
 
@@ -36,8 +38,10 @@ foreach(file ${VNCVIEWER_SOURCES})
 endforeach(file)
 target_sources(uvnc_settings PRIVATE "${CMAKE_SOURCE_DIR}/../uvnc_settings2/uvnc_settings/uvnc_settings.rc")
 set_source_files_properties(${CMAKE_SOURCE_DIR}/../uvnc_settings2/uvnc_settings/uvnc_settings.rc LANGUAGE RC)
-set_source_files_properties(${CMAKE_SOURCE_DIR}/../uvnc_settings2/uvnc_settings/uvnc_settings.rc PROPERTIES COMPILE_FLAGS "-Ocoff")
-if( ${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64" )
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+  set_source_files_properties(${CMAKE_SOURCE_DIR}/../uvnc_settings2/uvnc_settings/uvnc_settings.rc PROPERTIES COMPILE_FLAGS "-Ocoff")
+endif()
+if( ${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64" OR ${CMAKE_SYSTEM_PROCESSOR} STREQUAL "AMD64")
     target_compile_definitions(uvnc_settings PRIVATE _X64)
 endif()
 target_link_libraries(uvnc_settings
@@ -45,3 +49,4 @@ target_link_libraries(uvnc_settings
     comctl32
     version
 )
+set_target_properties(uvnc_settings PROPERTIES WIN32_EXECUTABLE TRUE)
