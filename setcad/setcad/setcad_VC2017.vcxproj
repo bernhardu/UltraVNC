@@ -405,7 +405,7 @@
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command>"C:\Program Files (x86)\Windows Kits\8.1\bin\x86\signtool.exe" sign /tr http://timestamp.digicert.com /td sha256 /fd sha256 /as /sha1 7686bed45b491e41586b7d2a3c63cbd7e2f3d0ca "$(OutDir)$(TargetName)$(TargetExt)"
+      <Command>$(SIGNTOOL) sign /tr http://timestamp.digicert.com /td sha256 /fd sha256 /as /sha1 7686bed45b491e41586b7d2a3c63cbd7e2f3d0ca "$(OutDir)$(TargetName)$(TargetExt)"
 copy "$(OutDir)$(TargetName)$(TargetExt)" c:\uvnc\32\xp</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -431,7 +431,7 @@ copy "$(OutDir)$(TargetName)$(TargetExt)" c:\uvnc\32\xp</Command>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command>"C:\Program Files (x86)\Windows Kits\8.1\bin\x86\signtool.exe" sign /tr http://timestamp.digicert.com /td sha256 /fd sha256 /as /sha1 7686bed45b491e41586b7d2a3c63cbd7e2f3d0ca "$(OutDir)$(TargetName)$(TargetExt)"
+      <Command>$(SIGNTOOL) sign /tr http://timestamp.digicert.com /td sha256 /fd sha256 /as /sha1 7686bed45b491e41586b7d2a3c63cbd7e2f3d0ca "$(OutDir)$(TargetName)$(TargetExt)"
 copy "$(OutDir)$(TargetName)$(TargetExt)" c:\uvnc\32\xp</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -458,7 +458,7 @@ copy "$(OutDir)$(TargetName)$(TargetExt)" c:\uvnc\32\xp</Command>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command>"C:\Program Files (x86)\Windows Kits\8.1\bin\x86\signtool.exe" sign /tr http://timestamp.digicert.com /td sha256 /fd sha256 /as /sha1 7686bed45b491e41586b7d2a3c63cbd7e2f3d0ca "$(OutDir)$(TargetName)$(TargetExt)"
+      <Command>$(SIGNTOOL) sign /tr http://timestamp.digicert.com /td sha256 /fd sha256 /as /sha1 7686bed45b491e41586b7d2a3c63cbd7e2f3d0ca "$(OutDir)$(TargetName)$(TargetExt)"
 copy "$(OutDir)$(TargetName)$(TargetExt)" c:\uvnc\32\xp</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -485,7 +485,7 @@ copy "$(OutDir)$(TargetName)$(TargetExt)" c:\uvnc\32\xp</Command>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command>"C:\Program Files (x86)\Windows Kits\8.1\bin\x86\signtool.exe" sign /sha1 6D4DE9F8F9626857AEA19A9D95405BBF1A800532 /n "uvnc bvba" /v /as /fd sha256 /tr http://sha256timestamp.ws.symantec.com/sha256/timestamp "$(OutDir)$(TargetName)$(TargetExt)"
+      <Command>$(SIGNTOOL) sign /sha1 6D4DE9F8F9626857AEA19A9D95405BBF1A800532 /n "uvnc bvba" /v /as /fd sha256 /tr http://sha256timestamp.ws.symantec.com/sha256/timestamp "$(OutDir)$(TargetName)$(TargetExt)"
 copy "$(OutDir)$(TargetName)$(TargetExt)" c:\uvnc\32\oldCPU</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -511,8 +511,8 @@ copy "$(OutDir)$(TargetName)$(TargetExt)" c:\uvnc\32\oldCPU</Command>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command>"C:\Program Files (x86)\Windows Kits\8.1\bin\x86\signtool.exe" sign /sha1 075BD1CAB5AE085E523AF7883FC0A8127BE08C71 /n "uvnc bvba" /v /fd sha1 /t http://timestamp.verisign.com/scripts/timstamp.dll "$(OutDir)$(TargetName)$(TargetExt)"
-"C:\Program Files (x86)\Windows Kits\8.1\bin\x86\signtool.exe" sign /sha1 0F96782496EA96F2BA96CF177E61F993CA5BC2E8 /n "uvnc bvba" /v /as /fd sha256 /tr http://timestamp.geotrust.com/tsa "$(OutDir)$(TargetName)$(TargetExt)"</Command>
+      <Command>$(SIGNTOOL) sign /sha1 075BD1CAB5AE085E523AF7883FC0A8127BE08C71 /n "uvnc bvba" /v /fd sha1 /t http://timestamp.verisign.com/scripts/timstamp.dll "$(OutDir)$(TargetName)$(TargetExt)"
+$(SIGNTOOL) sign /sha1 0F96782496EA96F2BA96CF177E61F993CA5BC2E8 /n "uvnc bvba" /v /as /fd sha256 /tr http://timestamp.geotrust.com/tsa "$(OutDir)$(TargetName)$(TargetExt)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Vista|Win32'">
@@ -537,7 +537,7 @@ copy "$(OutDir)$(TargetName)$(TargetExt)" c:\uvnc\32\oldCPU</Command>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command>"C:\Program Files (x86)\Windows Kits\8.1\bin\x86\signtool.exe" sign /sha1 6D4DE9F8F9626857AEA19A9D95405BBF1A800532 /n "uvnc bvba" /v /as /fd sha256 /tr http://sha256timestamp.ws.symantec.com/sha256/timestamp "$(OutDir)$(TargetName)$(TargetExt)"
+      <Command>$(SIGNTOOL) sign /sha1 6D4DE9F8F9626857AEA19A9D95405BBF1A800532 /n "uvnc bvba" /v /as /fd sha256 /tr http://sha256timestamp.ws.symantec.com/sha256/timestamp "$(OutDir)$(TargetName)$(TargetExt)"
 copy "$(OutDir)$(TargetName)$(TargetExt)" c:\uvnc\32\win8</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -564,7 +564,7 @@ copy "$(OutDir)$(TargetName)$(TargetExt)" c:\uvnc\32\win8</Command>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
     </Link>
     <PostBuildEvent>
-      <Command>"C:\Program Files (x86)\Windows Kits\8.1\bin\x86\signtool.exe" sign /tr http://timestamp.digicert.com /td sha256 /fd sha256 /as /sha1 7686bed45b491e41586b7d2a3c63cbd7e2f3d0ca "$(OutDir)$(TargetName)$(TargetExt)"
+      <Command>$(SIGNTOOL) sign /tr http://timestamp.digicert.com /td sha256 /fd sha256 /as /sha1 7686bed45b491e41586b7d2a3c63cbd7e2f3d0ca "$(OutDir)$(TargetName)$(TargetExt)"
 copy "$(OutDir)$(TargetName)$(TargetExt)" c:\uvnc\64\xp</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -591,7 +591,7 @@ copy "$(OutDir)$(TargetName)$(TargetExt)" c:\uvnc\64\xp</Command>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
     </Link>
     <PostBuildEvent>
-      <Command>"C:\Program Files (x86)\Windows Kits\8.1\bin\x86\signtool.exe" sign /tr http://timestamp.digicert.com /td sha256 /fd sha256 /as /sha1 7686bed45b491e41586b7d2a3c63cbd7e2f3d0ca "$(OutDir)$(TargetName)$(TargetExt)"
+      <Command>$(SIGNTOOL) sign /tr http://timestamp.digicert.com /td sha256 /fd sha256 /as /sha1 7686bed45b491e41586b7d2a3c63cbd7e2f3d0ca "$(OutDir)$(TargetName)$(TargetExt)"
 copy "$(OutDir)$(TargetName)$(TargetExt)" c:\uvnc\64\xp</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -618,7 +618,7 @@ copy "$(OutDir)$(TargetName)$(TargetExt)" c:\uvnc\64\xp</Command>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
     </Link>
     <PostBuildEvent>
-      <Command>"C:\Program Files (x86)\Windows Kits\8.1\bin\x86\signtool.exe" sign /tr http://timestamp.digicert.com /td sha256 /fd sha256 /as /sha1 7686bed45b491e41586b7d2a3c63cbd7e2f3d0ca "$(OutDir)$(TargetName)$(TargetExt)"
+      <Command>$(SIGNTOOL) sign /tr http://timestamp.digicert.com /td sha256 /fd sha256 /as /sha1 7686bed45b491e41586b7d2a3c63cbd7e2f3d0ca "$(OutDir)$(TargetName)$(TargetExt)"
 copy "$(OutDir)$(TargetName)$(TargetExt)" c:\uvnc\64\xp</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -646,7 +646,7 @@ copy "$(OutDir)$(TargetName)$(TargetExt)" c:\uvnc\64\xp</Command>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
     </Link>
     <PostBuildEvent>
-      <Command>"C:\Program Files (x86)\Windows Kits\8.1\bin\x86\signtool.exe" sign /sha1 6D4DE9F8F9626857AEA19A9D95405BBF1A800532 /n "uvnc bvba" /v /as /fd sha256 /tr http://sha256timestamp.ws.symantec.com/sha256/timestamp "$(OutDir)$(TargetName)$(TargetExt)"
+      <Command>$(SIGNTOOL) sign /sha1 6D4DE9F8F9626857AEA19A9D95405BBF1A800532 /n "uvnc bvba" /v /as /fd sha256 /tr http://sha256timestamp.ws.symantec.com/sha256/timestamp "$(OutDir)$(TargetName)$(TargetExt)"
 copy "$(OutDir)$(TargetName)$(TargetExt)" c:\uvnc\64\xp</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -673,8 +673,8 @@ copy "$(OutDir)$(TargetName)$(TargetExt)" c:\uvnc\64\xp</Command>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
     </Link>
     <PostBuildEvent>
-      <Command>"C:\Program Files (x86)\Windows Kits\8.1\bin\x86\signtool.exe" sign /sha1 075BD1CAB5AE085E523AF7883FC0A8127BE08C71 /n "uvnc bvba" /v /fd sha1 /t http://timestamp.verisign.com/scripts/timstamp.dll "$(OutDir)$(TargetName)$(TargetExt)"
-"C:\Program Files (x86)\Windows Kits\8.1\bin\x86\signtool.exe" sign /sha1 0F96782496EA96F2BA96CF177E61F993CA5BC2E8 /n "uvnc bvba" /v /as /fd sha256 /tr http://timestamp.geotrust.com/tsa "$(OutDir)$(TargetName)$(TargetExt)"</Command>
+      <Command>$(SIGNTOOL) sign /sha1 075BD1CAB5AE085E523AF7883FC0A8127BE08C71 /n "uvnc bvba" /v /fd sha1 /t http://timestamp.verisign.com/scripts/timstamp.dll "$(OutDir)$(TargetName)$(TargetExt)"
+$(SIGNTOOL) sign /sha1 0F96782496EA96F2BA96CF177E61F993CA5BC2E8 /n "uvnc bvba" /v /as /fd sha256 /tr http://timestamp.geotrust.com/tsa "$(OutDir)$(TargetName)$(TargetExt)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Vista|x64'">
@@ -700,7 +700,7 @@ copy "$(OutDir)$(TargetName)$(TargetExt)" c:\uvnc\64\xp</Command>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
     </Link>
     <PostBuildEvent>
-      <Command>"C:\Program Files (x86)\Windows Kits\8.1\bin\x86\signtool.exe" sign /sha1 6D4DE9F8F9626857AEA19A9D95405BBF1A800532 /n "uvnc bvba" /v /as /fd sha256 /tr http://sha256timestamp.ws.symantec.com/sha256/timestamp "$(OutDir)$(TargetName)$(TargetExt)"
+      <Command>$(SIGNTOOL) sign /sha1 6D4DE9F8F9626857AEA19A9D95405BBF1A800532 /n "uvnc bvba" /v /as /fd sha256 /tr http://sha256timestamp.ws.symantec.com/sha256/timestamp "$(OutDir)$(TargetName)$(TargetExt)"
 copy "$(OutDir)$(TargetName)$(TargetExt)" c:\uvnc\64\win8</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
