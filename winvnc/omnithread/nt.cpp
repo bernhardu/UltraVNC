@@ -345,7 +345,7 @@ omni_semaphore::omni_semaphore(unsigned int initial)
 }
 
 
-omni_semaphore::~omni_semaphore(void)
+omni_semaphore::~omni_semaphore(void) noexcept(false)
 {
   if (!CloseHandle(nt_sem)) {
     DB( cerr << "omni_semaphore::~omni_semaphore: CloseHandle error "
@@ -583,7 +583,7 @@ omni_thread::common_constructor(void* arg, priority_t pri, int det)
 //
 // Destructor for omni_thread.
 //
-omni_thread::~omni_thread(void)
+omni_thread::~omni_thread(void) noexcept(false)
 {
     DB(cerr << "destructor called for thread " << id() << endl);
     if (_values) {
@@ -928,7 +928,7 @@ public:
     if (!TlsSetValue(self_tls_index, (LPVOID)this))
       throw omni_thread_fatal(GetLastError());
   }
-  inline ~omni_thread_dummy()
+  inline ~omni_thread_dummy() noexcept(false)
   {
     if (!TlsSetValue(self_tls_index, (LPVOID)0))
       throw omni_thread_fatal(GetLastError());

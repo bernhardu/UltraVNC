@@ -353,7 +353,7 @@ class _OMNITHREAD_NTDLL_ omni_semaphore {
 
 public:
     omni_semaphore(unsigned int initial = 1);
-    ~omni_semaphore(void);
+    ~omni_semaphore(void) noexcept(false);
 
     void wait(void);
 	// if semaphore value is > 0 then decrement it and carry on. If it's
@@ -449,7 +449,7 @@ protected:
 	// the thread to be undetached.  In this case the thread executes the
 	// run_undetached member function.
 
-    virtual ~omni_thread(void);
+    virtual ~omni_thread(void) noexcept(false);
 	// destructor cannot be called by user (except via a derived class).
 	// Use exit() or cancel() instead. This also means a thread object must
 	// be allocated with new - it cannot be statically or automatically

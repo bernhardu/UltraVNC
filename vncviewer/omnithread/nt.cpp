@@ -347,7 +347,7 @@ omni_semaphore::omni_semaphore(unsigned int initial)
 }
 
 
-omni_semaphore::~omni_semaphore(void)
+omni_semaphore::~omni_semaphore(void) noexcept(false)
 {
   if (!CloseHandle(nt_sem)) {
     DB( cerr << "omni_semaphore::~omni_semaphore: CloseHandle error "
@@ -563,7 +563,7 @@ omni_thread::common_constructor(void* arg, priority_t pri, int det)
 // Destructor for omni_thread.
 //
 
-omni_thread::~omni_thread(void)
+omni_thread::~omni_thread(void) noexcept(false)
 {
     DB(cerr << "destructor called for thread " << id() << endl);
 // sf@ - _endthread() that is used for BCC already does a CloseHandle (that's not the case for _endthreadEx())
