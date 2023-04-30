@@ -12,7 +12,11 @@
 #endif /*__MINGW32__*/
 
 /* How to obtain thread-local storage */
+#if !defined(__MINGW32__)
 #define THREAD_LOCAL  __declspec(thread)
+#else
+#define THREAD_LOCAL
+#endif /*__MINGW32__*/
 
 /* Define to the full name of this package. */
 #define PACKAGE_NAME  "libjpeg-turbo"
