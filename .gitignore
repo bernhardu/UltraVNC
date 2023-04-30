@@ -71,7 +71,6 @@ winvnc/GPUCache/
 vncviewer/GPUCache/
 GPUCache/
 winvnc/UltraVnc/.vs/
-uvnc_settings2/uvnc_settings/
 winvnc/x64/
 *FileListAbsolute.txt
 addon/ms-logon/authadm/x64/
@@ -100,3 +99,7 @@ winvnc/SC_20_DEBUG/
 winvnc/SC_20/workgrpdomnt4.exp
 winvnc/SC_20/
 winvnc/vnchooks/x64/
+addon/ms-logon/authSSP/buildtime.h
+addon/ms-logon/MSLogonACL/buildtime.h
+addon/Debug/
+*.bsc
