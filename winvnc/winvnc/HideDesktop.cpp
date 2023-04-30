@@ -297,7 +297,7 @@ void DisableEffects()
 		}
 		for (iParam = 0; iParam < (sizeof(spiParams) / sizeof(spiParams[0])); iParam++) {
 			if (spiValues[iParam] != (BOOL) spiSuggested[iParam]) {
-				if (!SystemParametersInfo(spiParams[iParam]+1, 0, (PVOID)spiSuggested[iParam], SPIF_SENDCHANGE)) {				
+				if (!SystemParametersInfo(spiParams[iParam]+1, 0, (PVOID)(uintptr_t)spiSuggested[iParam], SPIF_SENDCHANGE)) {
 					vnclog.Print(LL_INTWARN, VNCLOG("Failed to set SPI value for 0x%04x to 0x%08x (0x%08x)\n"), spiParams[iParam]+1, spiSuggested[iParam], GetLastError());
 				} else {
 					vnclog.Print(LL_INTINFO, VNCLOG("Set SPI value for 0x%04x to 0x%08x\n"), spiParams[iParam]+1, spiSuggested[iParam]);
@@ -314,7 +314,7 @@ void EnableEffects()
 		int iParam = 0;
 		for (iParam = 0; iParam < (sizeof(spiParams) / sizeof(spiParams[0])); iParam++) {
 			if (spiValues[iParam] != (BOOL) spiSuggested[iParam]) {
-				if (!SystemParametersInfo(spiParams[iParam]+1, 0, (PVOID)spiValues[iParam], SPIF_SENDCHANGE)) {
+				if (!SystemParametersInfo(spiParams[iParam]+1, 0, (PVOID)(uintptr_t)spiValues[iParam], SPIF_SENDCHANGE)) {
 					vnclog.Print(LL_INTWARN, VNCLOG("Failed to restore SPI value for 0x%04x (0x%08x)\n"), spiParams[iParam]+1, GetLastError());
 				} else {
 					vnclog.Print(LL_INTINFO, VNCLOG("Restored SPI value for 0x%04x to 0x%08x\n"), spiParams[iParam]+1, spiValues[iParam]);
@@ -406,7 +406,7 @@ void EnableFontSmoothing()
 				vnclog.Print(LL_INTINFO, VNCLOG("Restored SPI value for SPI_SETFONTSMOOTHING: 0x%08x\n"), g_bOldFontSmoothingValue);
 
 				if (g_bGotClearType) {
-					if (!SystemParametersInfo(0x1049 /*SPI_SETCLEARTYPE*/, 0, (PVOID)g_bOldClearTypeValue, SPIF_SENDCHANGE)) {				
+					if (!SystemParametersInfo(0x1049 /*SPI_SETCLEARTYPE*/, 0, (PVOID)(uintptr_t)g_bOldClearTypeValue, SPIF_SENDCHANGE)) {
 						vnclog.Print(LL_INTWARN, VNCLOG("Failed to restore SPI value for SPI_SETCLEARTYPE (0x%08x)\n"), GetLastError());
 					} else {
 						vnclog.Print(LL_INTINFO, VNCLOG("Restored SPI value for SPI_SETCLEARTYPE: 0x%08x\n"), g_bOldClearTypeValue);
@@ -414,7 +414,7 @@ void EnableFontSmoothing()
 				}
 
 				if (g_bGotFontSmoothingType) {
-					if (!SystemParametersInfo(0x200B /*SPI_SETFONTSMOOTHINGTYPE*/, 0, (PVOID)g_nOldFontSmoothingType, SPIF_SENDCHANGE)) {				
+					if (!SystemParametersInfo(0x200B /*SPI_SETFONTSMOOTHINGTYPE*/, 0, (PVOID)(uintptr_t)g_nOldFontSmoothingType, SPIF_SENDCHANGE)) {
 						vnclog.Print(LL_INTWARN, VNCLOG("Failed to restore SPI value for SPI_SETFONTSMOOTHINGTYPE (0x%08x)\n"), GetLastError());
 					} else {
 						vnclog.Print(LL_INTINFO, VNCLOG("Restored SPI value for SPI_SETFONTSMOOTHINGTYPE: 0x%08x\n"), g_nOldFontSmoothingType);

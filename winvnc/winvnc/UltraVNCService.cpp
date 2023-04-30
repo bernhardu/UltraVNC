@@ -1257,11 +1257,11 @@ BOOL UltraVNCService::CreateRemoteSessionProcess(
 	cpauData.dwCreationFlags = dwCreationFlags;
 	cpauData.dwProcessId = GetCurrentProcessId();
 	cpauData.hToken = hToken;
-	cpauData.lpApplicationName = (LPWSTR)MarshallString(lpApplicationName, &cpauData, sizeof(bDump), &pBuffer, &dwUsedBytes);
-	cpauData.lpCommandLine = (LPWSTR)MarshallString(lpCommandLine, &cpauData, sizeof(bDump), &pBuffer, &dwUsedBytes);
+	cpauData.lpApplicationName = (LPWSTR)(uintptr_t)MarshallString(lpApplicationName, &cpauData, sizeof(bDump), &pBuffer, &dwUsedBytes);
+	cpauData.lpCommandLine = (LPWSTR)(uintptr_t)MarshallString(lpCommandLine, &cpauData, sizeof(bDump), &pBuffer, &dwUsedBytes);
 	cpauData.StartupInfo = StartupInfo;
-	cpauData.StartupInfo.lpDesktop = (LPWSTR)MarshallString(cpauData.StartupInfo.lpDesktop, &cpauData, sizeof(bDump), &pBuffer, &dwUsedBytes);
-	cpauData.StartupInfo.lpTitle = (LPWSTR)MarshallString(cpauData.StartupInfo.lpTitle, &cpauData, sizeof(bDump), &pBuffer, &dwUsedBytes);
+	cpauData.StartupInfo.lpDesktop = (LPWSTR)(uintptr_t)MarshallString(cpauData.StartupInfo.lpDesktop, &cpauData, sizeof(bDump), &pBuffer, &dwUsedBytes);
+	cpauData.StartupInfo.lpTitle = (LPWSTR)(uintptr_t)MarshallString(cpauData.StartupInfo.lpTitle, &cpauData, sizeof(bDump), &pBuffer, &dwUsedBytes);
 
 	if (lpEnvironment) {
 		if (dwCreationFlags & CREATE_UNICODE_ENVIRONMENT) {
@@ -1284,7 +1284,7 @@ BOOL UltraVNCService::CreateRemoteSessionProcess(
 		}
 		if (dwEnvLen + dwUsedBytes <= sizeof(bDump)) {
 			memmove(pBuffer, lpEnvironment, dwEnvLen);
-			cpauData.lpEnvironment = (LPVOID)dwUsedBytes;
+			cpauData.lpEnvironment = (LPVOID)(uintptr_t)dwUsedBytes;
 			pBuffer += dwEnvLen;
 			dwUsedBytes += dwEnvLen;
 		}
