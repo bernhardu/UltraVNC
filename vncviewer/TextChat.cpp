@@ -39,7 +39,7 @@
 
 // [v1.0.2-jp1 fix]
 LRESULT CALLBACK SBProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-LONG_PTR pDefSBProc;
+WNDPROC pDefSBProc;
 extern HINSTANCE m_hInstResDLL;
 
 extern char sz_E1[64];
@@ -515,7 +515,7 @@ BOOL CALLBACK TextChat::TextChatDlgProc(  HWND hWnd,  UINT uMsg,  WPARAM wParam,
 			
 			// [v1.0.2-jp1 fix] SUBCLASS Split bar
             pDefSBProc = helper::SafeGetWindowProc(GetDlgItem(hWnd, IDC_STATIC_SPLIT));
-            helper::SafeSetWindowProc(GetDlgItem(hWnd, IDC_STATIC_SPLIT), (LONG_PTR)SBProc);
+            helper::SafeSetWindowProc(GetDlgItem(hWnd, IDC_STATIC_SPLIT), SBProc);
 
 			return TRUE;
 		}
@@ -742,5 +742,5 @@ LRESULT CALLBACK SBProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		break;
 	}
 
-	return CallWindowProc((WNDPROC)pDefSBProc, hWnd, uMsg, wParam, lParam);
+	return CallWindowProc(pDefSBProc, hWnd, uMsg, wParam, lParam);
 }

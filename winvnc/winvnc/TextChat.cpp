@@ -41,7 +41,7 @@
 
 //	[v1.0.2-jp1 fix]
 LRESULT CALLBACK SBProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-LONG pDefSBProc=NULL;
+WNDPROC pDefSBProc=NULL;
 extern HINSTANCE	hInstResDLL;
 
 extern HINSTANCE	hAppInstance;
@@ -817,6 +817,6 @@ LRESULT CALLBACK SBProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		break;
 	}
 
-	return CallWindowProc((WNDPROC)pDefSBProc, hWnd, uMsg, wParam, lParam);
+	return CallWindowProc(pDefSBProc, hWnd, uMsg, wParam, lParam);
 }
 //	[<--v1.0.2-jp1 fix]

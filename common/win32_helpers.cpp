@@ -55,23 +55,22 @@ HINSTANCE SafeGetWindowInstance(HWND hWnd)
     return hInstance;
 }
 
-LONG SafeGetWindowProc(HWND hWnd)
+WNDPROC SafeGetWindowProc(HWND hWnd)
 {
 #ifndef _X64
-    LONG pWndProc = GetWindowLong(hWnd, GWL_WNDPROC);
+    WNDPROC pWndProc = (WNDPROC)GetWindowLong(hWnd, GWL_WNDPROC);
 #else
-    //TODO: get rid of LONG_PTR return warning for x64
-    LONG pWndProc = GetWindowLongPtr(hWnd, GWLP_WNDPROC);
+    WNDPROC pWndProc = (WNDPROC)GetWindowLongPtr(hWnd, GWLP_WNDPROC);
 #endif
     return pWndProc;
 }
 
-void SafeSetWindowProc(HWND hWnd, LONG_PTR pWndProc)
+void SafeSetWindowProc(HWND hWnd, WNDPROC pWndProc)
 {
 #ifndef _X64
-    SetWindowLong(hWnd, GWL_WNDPROC, pWndProc);
+    SetWindowLong(hWnd, GWL_WNDPROC, (LONG)pWndProc);
 #else
-    SetWindowLongPtr(hWnd, GWLP_WNDPROC, pWndProc);
+    SetWindowLongPtr(hWnd, GWLP_WNDPROC, (LONG_PTR)pWndProc);
 #endif
 }
 
