@@ -2,12 +2,6 @@ cmake_minimum_required(VERSION 3.1.0)
 
 project(libjpeg LANGUAGES C)
 
-if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-  set(CMAKE_C_FLAGS "-g -O0 -Wno-write-strings")
-endif()
-
-
-
 set(LIBZSTD_SOURCES
     common/entropy_common.c
     common/error_private.c

@@ -2,12 +2,6 @@ cmake_minimum_required(VERSION 3.1.0)
 
 project(libudt4 LANGUAGES CXX)
 
-if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-  set(CMAKE_CXX_FLAGS "-g -O0 -Wno-write-strings -Wno-conversion-null")
-endif()
-
-
-
 set(LIBUDT4_SOURCES
     src/api.cpp
     src/buffer.cpp

@@ -2,13 +2,6 @@ cmake_minimum_required(VERSION 3.1.0)
 
 project(vnchooks LANGUAGES C CXX RC)
 
-if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-  set(CMAKE_C_FLAGS "-g -O0 -Wno-write-strings")
-  set(CMAKE_CXX_FLAGS "-g -O0 -Wno-write-strings -Wno-conversion-null")
-endif()
-
-
-
 set(VNCVIEWER_SOURCES
     VNCHooks.cpp
 )
