@@ -44,8 +44,6 @@
 #include <shlwapi.h> // DLLVERSIONINFO
 #include "stdhdrs.h"
 
-struct __declspec(uuid("F490EB00-1240-11D1-9888-006097DEACF9")) IActiveDesktop;
-
 #define PACKVERSION(major,minor) MAKELONG(minor,major)
 
 DWORD GetDllVersion(LPCTSTR lpszDllName)
