@@ -46,8 +46,10 @@ END
 
 IDC_UVNC_SETTINGS ACCELERATORS
 BEGIN
+#ifdef GCC_WINDRES
     "?",            IDM_ABOUT,              ASCII,  ALT
     "/",            IDM_ABOUT,              ASCII,  ALT
+#endif
 END
 
 
