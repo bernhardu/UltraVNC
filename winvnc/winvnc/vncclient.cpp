@@ -1746,7 +1746,7 @@ vncClientThread::AuthMsLogon(std::string& auth_message)
 	}
 
 	if (result) {
-		if (user != NULL)
+		if (user[0] != '\0')
 			m_client->m_client_domain_username = _strdup(user);
 		else
 			m_client->m_client_domain_username = _strdup("<unknown>");
@@ -6375,7 +6375,7 @@ int vncClient::ZipPossibleDirectory(LPSTR szSrcFileName)
 		::GetTempPath(MAX_PATH, szWorkingDir); //PGM Use Windows Temp folder
 		if (m_fFTUserImpersonatedOk)
 			strcpy_s(szWorkingDir, m_szTempDir);
-		if (szWorkingDir == NULL) //PGM
+		if (szWorkingDir[0] == '\0') //PGM
 		{ //PGM
 			if (GetModuleFileName(NULL, szWorkingDir, MAX_PATH))
 			{

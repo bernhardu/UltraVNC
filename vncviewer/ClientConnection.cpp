@@ -7577,7 +7577,7 @@ LRESULT CALLBACK ClientConnection::GTGBS_StatusProc(HWND hwnd, UINT iMsg, WPARAM
 			SetDlgItemInt(hwnd,IDC_RECEIVED,_this->m_BytesRead,false);
 			SetDlgItemInt(hwnd,IDC_SEND,_this->m_BytesSend,false);
 
-			if (_this->m_host != NULL) {
+			if (_this->m_host[0] != '\0') {
 				SetDlgItemText(hwnd,IDC_VNCSERVER,_this->m_host);
 				sprintf_s(wt,"%s %s",sz_L72,_this->m_host);
 				SetWindowText(hwnd,wt);

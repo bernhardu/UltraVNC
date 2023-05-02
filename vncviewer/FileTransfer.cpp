@@ -2644,7 +2644,7 @@ int FileTransfer::ZipPossibleDirectory(LPSTR szSrcFileName)
 		char szDirZipPath[MAX_PATH];
 		char szWorkingDir[MAX_PATH];
 		::GetTempPath(MAX_PATH,szWorkingDir); //PGM Use Windows Temp folder
-		if (szWorkingDir == NULL) //PGM 
+		if (szWorkingDir[0] == '\0') //PGM
 		{ //PGM
 			if (GetModuleFileName(NULL, szWorkingDir, MAX_PATH))
 			{
