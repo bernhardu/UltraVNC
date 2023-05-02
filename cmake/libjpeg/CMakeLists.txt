@@ -2,8 +2,6 @@ cmake_minimum_required(VERSION 3.1.0)
 
 project(libjpeg LANGUAGES C ASM_NASM)
 
-enable_language(ASM_NASM)
-
 set(LIBJPEG_SOURCES
     jaricom.c
     jcapimin.c
