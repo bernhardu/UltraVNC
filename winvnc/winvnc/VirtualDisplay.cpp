@@ -41,7 +41,6 @@ BOOL GetVersion2(OSVERSIONINFOEX* os) {
 		os->dwMinorVersion = osw->dwMinorVersion;
 		os->dwPlatformId = osw->dwPlatformId;
 		os->dwOSVersionInfoSize = sizeof(*os);
-		sizeof(os->szCSDVersion);
 		WCHAR* src = osw->szCSDVersion;
 		unsigned char* dtc = (unsigned char*)os->szCSDVersion;
 		while (*src)

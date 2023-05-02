@@ -137,7 +137,6 @@ void DeskDupEngine::videoDriver_start(int x, int y, int w, int h, bool onlyVirtu
 		return;
 
 	pChangebuf = (CHANGES_BUF*)fileView;
-	pChangebuf->pointrect[0].rect.left;
 
 	if (hFileMapBitmap != NULL)
 		return;
