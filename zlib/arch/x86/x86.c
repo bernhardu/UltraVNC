@@ -15,7 +15,7 @@ int x86_cpu_has_pclmul = 0;
 
 static void _x86_check_features(void);
 
-#ifndef _MSC_VER
+#if !defined(_MSC_VER) && !defined(__clang__)
 #include <pthread.h>
 #include <cpuid.h>
 
