@@ -67,7 +67,7 @@ typedef struct {
 
 typedef struct {
 	rfbGIIMsgHeader header;
-	uint16_t version;
+	int16_t version;
 } rfbGIIClientVersionMsg; 
 
 #define sz_rfbGIIClientVersionMsg (2 + sz_rfbGIIMsgHeader)
