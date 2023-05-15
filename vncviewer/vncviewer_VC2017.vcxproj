@@ -443,8 +443,7 @@
     </Bscmake>
     <PostBuildEvent>
       <Command>$(SIGNTOOL)  sign /tr http://timestamp.sectigo.com?td=sha256 /td sha256 /fd sha256 /as /sha1 adc749d2f75f158c8218857ff187f81b97b3872a "$(OutDir)$(TargetName)$(TargetExt)"
-copy "$(OutDir)$(TargetName)$(TargetExt)" c:\uvnc\32\xp
-copy "$(OutDir)$(TargetName)$(TargetExt)" C:\uvnc\Users\rudi\Desktop\git_ultravnc\Files\vncviewer.exe</Command>
+copy "$(OutDir)$(TargetName)$(TargetExt)" c:\uvnc\32\xp</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='NOacceleration|Win32'">
@@ -788,8 +787,7 @@ copy "$(OutDir)$(TargetName)$(TargetExt)" c:\uvnc\32\ipv6</Command>
     </Bscmake>
     <PostBuildEvent>
       <Command>$(SIGNTOOL)  sign /tr http://timestamp.sectigo.com?td=sha256 /td sha256 /fd sha256 /as /sha1 adc749d2f75f158c8218857ff187f81b97b3872a "$(OutDir)$(TargetName)$(TargetExt)"
-copy "$(OutDir)$(TargetName)$(TargetExt)" c:\uvnc\64\XP
-copy "$(OutDir)$(TargetName)$(TargetExt)" C:\uvnc\Users\rudi\Desktop\git_ultravnc\Files\vncviewer64.exe</Command>
+copy "$(OutDir)$(TargetName)$(TargetExt)" c:\uvnc\64\XP</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='NOacceleration|x64'">
