@@ -2044,7 +2044,7 @@ bool FileTransfer::ReceiveFile(unsigned long lSize, UINT nLen)
 	*strrchr(szDestPath, '\\') = '\0'; // We don't handle UNCs for now
 
 	//security requested filename must be the received filename
-	if (strcmp(szRemoteFileName, szRemoteFileNameRequested) != NULL)
+	if (strcmp(szRemoteFileName, szRemoteFileNameRequested) != 0)
 		return false;
 
     // only check root folder on drive, in case we have no permissions on dest folder
