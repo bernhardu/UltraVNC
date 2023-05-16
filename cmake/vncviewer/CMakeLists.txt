@@ -101,6 +101,7 @@ target_link_libraries(vncviewer
     gdi32
     gdiplus
     imm32
+    shlwapi
     winmm
     ws2_32
 )
