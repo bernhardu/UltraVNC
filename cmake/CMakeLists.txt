@@ -22,10 +22,14 @@ if (asan)
 endif()
 
 add_subdirectory(libzstd)
-add_subdirectory(libjpeg)
 add_subdirectory(libudt4)
 add_subdirectory(libudtcloud)
 add_subdirectory(uvnc_settings)
 add_subdirectory(vnchooks)
+
+option(ENABLE_SHARED "Build shared libraries" FALSE)
+set(JPEG_FOR_UVNC 1)
+add_subdirectory(../libjpeg-turbo-win libturbojpeg)
+
 add_subdirectory(vncviewer)
 add_subdirectory(winvnc)

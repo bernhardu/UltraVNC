@@ -685,6 +685,7 @@ if(WITH_TURBOJPEG)
       set_target_properties(turbojpeg-static PROPERTIES OUTPUT_NAME turbojpeg)
     endif()
 
+    if(NOT JPEG_FOR_UVNC)
     add_executable(tjunittest-static tjunittest.c tjutil.c md5/md5.c
       md5/md5hl.c)
     target_link_libraries(tjunittest-static turbojpeg-static)
@@ -694,6 +695,7 @@ if(WITH_TURBOJPEG)
     if(UNIX)
       target_link_libraries(tjbench-static m)
     endif()
+    endif() # NOT JPEG_FOR_UVNC
   endif()
 endif()
 
@@ -708,7 +710,7 @@ else()
   set(DJPEG_BMP_SOURCES wrbmp.c wrtarga.c)
 endif()
 
-if(ENABLE_STATIC)
+if(ENABLE_STATIC AND NOT JPEG_FOR_UVNC)
   add_executable(cjpeg-static cjpeg.c cdjpeg.c rdgif.c rdppm.c rdswitch.c
     ${CJPEG_BMP_SOURCES})
   set_property(TARGET cjpeg-static PROPERTY COMPILE_FLAGS ${COMPILE_FLAGS})
@@ -724,9 +726,11 @@ if(ENABLE_STATIC)
   set_property(TARGET jpegtran-static PROPERTY COMPILE_FLAGS "${USE_SETMODE}")
 endif()
 
+if(NOT JPEG_FOR_UVNC)
 add_executable(rdjpgcom rdjpgcom.c)
 
 add_executable(wrjpgcom wrjpgcom.c)
+endif() # NOT JPEG_FOR_UVNC
 
 
 ###############################################################################
@@ -737,7 +741,9 @@ if(WITH_FUZZ)
   add_subdirectory(fuzz)
 endif()
 
+if(NOT JPEG_FOR_UVNC)
 add_executable(strtest strtest.c)
+endif() # NOT JPEG_FOR_UVNC
 
 add_subdirectory(md5)
 
@@ -1455,6 +1461,7 @@ endif()
 # INSTALLATION
 ###############################################################################
 
+if(NOT JPEG_FOR_UVNC)
 set(EXE ${CMAKE_EXECUTABLE_SUFFIX})
 
 if(WITH_TURBOJPEG)
@@ -1555,3 +1562,4 @@ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/cmakescripts/cmake_uninstall.cmake.i
   "cmake_uninstall.cmake" IMMEDIATE @ONLY)
 
 add_custom_target(uninstall COMMAND ${CMAKE_COMMAND} -P cmake_uninstall.cmake)
+endif() # NOT JPEG_FOR_UVNC

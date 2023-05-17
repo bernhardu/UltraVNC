@@ -88,7 +88,7 @@ else()
     target_compile_definitions(vncviewer PRIVATE _VIEWER __WIN32__ _WINSTATIC)
 endif()
 target_link_libraries(vncviewer
-    libjpeg
+    jpeg-static
     libomnithread_${PROJECT_NAME}
     librdr_${PROJECT_NAME}
     libz_${PROJECT_NAME}

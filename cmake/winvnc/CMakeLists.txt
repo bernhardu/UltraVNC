@@ -117,7 +117,7 @@ else()
 endif()
 #_WIN32_WINNT=0x601   was this really needed for mingw?
 target_link_libraries(winvnc
-    libjpeg
+    jpeg-static
     libomnithread_${PROJECT_NAME}
     librdr_${PROJECT_NAME}
     libuvncsettings_${PROJECT_NAME}
