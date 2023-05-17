@@ -23,11 +23,13 @@ endforeach(file)
 if(NOT "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
     set(MSCDEF "-D_MSC_VER=1900")
 endif()
-set_source_files_properties( "${CMAKE_SOURCE_DIR}/../zlib/arch/x86/slide_sse.c"
-    PROPERTIES COMPILE_FLAGS "-mavx512f -mpclmul -msse2 ${MSCDEF} -Wno-attributes -DZLIB_CONST")
-set_source_files_properties( "${CMAKE_SOURCE_DIR}/../zlib/arch/x86/x86.c"
-    PROPERTIES COMPILE_FLAGS "-mavx512f -mpclmul -msse2 ${MSCDEF} -Wno-attributes -DZLIB_CONST")
-set_source_files_properties( "${CMAKE_SOURCE_DIR}/../zlib/arch/x86/crc_folding.c"
-    PROPERTIES COMPILE_FLAGS "-mavx512f -mpclmul -msse2 ${MSCDEF} -Wno-attributes -DZLIB_CONST")
-set_source_files_properties( "${CMAKE_SOURCE_DIR}/../zlib/crc32.c"
-    PROPERTIES COMPILE_FLAGS "-mavx512f -mpclmul -msse2 ${MSCDEF} -Wno-attributes -DZLIB_CONST")
+if(NOT "${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
+    set_source_files_properties( "${CMAKE_SOURCE_DIR}/../zlib/arch/x86/slide_sse.c"
+        PROPERTIES COMPILE_FLAGS "-mavx512f -mpclmul -msse2 ${MSCDEF} -Wno-attributes -DZLIB_CONST")
+    set_source_files_properties( "${CMAKE_SOURCE_DIR}/../zlib/arch/x86/x86.c"
+        PROPERTIES COMPILE_FLAGS "-mavx512f -mpclmul -msse2 ${MSCDEF} -Wno-attributes -DZLIB_CONST")
+    set_source_files_properties( "${CMAKE_SOURCE_DIR}/../zlib/arch/x86/crc_folding.c"
+        PROPERTIES COMPILE_FLAGS "-mavx512f -mpclmul -msse2 ${MSCDEF} -Wno-attributes -DZLIB_CONST")
+    set_source_files_properties( "${CMAKE_SOURCE_DIR}/../zlib/crc32.c"
+        PROPERTIES COMPILE_FLAGS "-mavx512f -mpclmul -msse2 ${MSCDEF} -Wno-attributes -DZLIB_CONST")
+endif()
