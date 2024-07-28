@@ -31,7 +31,6 @@
 #include "stdhdrs.h"
 bool G_USE_PIXEL=false;
 extern VNCLog vnclog;
-#define VNCLOG(s)	(__FUNCTION__ " : " s)
 
 struct _BMInfo {
 		BOOL			truecolour;

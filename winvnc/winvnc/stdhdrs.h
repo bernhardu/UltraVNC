@@ -108,7 +108,11 @@ extern VNCLog vnclog;
 #define LL_ALL		10
 
 // Macros for sticking in the current file name
+#if !defined(__MINGW32__) && !defined(__clang__)
 #define VNCLOG(s)	(__FUNCTION__ " : " s)
+#else
+#define VNCLOG(s)	((std::string() + __FUNCTION__ + " : " + (s)).c_str())
+#endif
 //#if MSC_VER > 12
 #ifndef _X64
 #pragma comment(linker,"/manifestdependency:\"type='Win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='X86' publicKeyToken='6595b64144ccf1df' language='*'\"")
