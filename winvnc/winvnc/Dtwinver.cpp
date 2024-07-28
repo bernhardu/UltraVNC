@@ -1441,6 +1441,16 @@ to maintain a single distribution point for the source code.
 
 ////////////////////////////////// Implementation /////////////////////////////
 
+#if defined(__MINGW32__)
+#include <stdint.h>
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wliteral-suffix"
+constexpr uint64_t operator "" ui64(uint64_t i) {
+    return i;
+}
+#pragma GCC diagnostic pop
+#endif
+
 COSVersion::COSVersion() //NOLINT(modernize-use-equals-default)
 {
 #if defined(COSVERSION_WIN16)
