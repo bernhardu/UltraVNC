@@ -123,7 +123,7 @@ struct AESCipher
 	}
 
 private:
-	static bool SetLastError(char *error)
+	static bool SetLastError(const char *error)
 	{
 		vnclog.Print(0, _T("AESCipher: %s\n"), error);
 		throw WarningException(error);
@@ -206,7 +206,7 @@ private:
 		out[BlockSize - 1] ^= c * 0x87;
 	}
 
-	static bool SetLastError(char *error)
+	static bool SetLastError(const char *error)
 	{
 		vnclog.Print(0, _T("CMACAuth: %s\n"), error);
 		throw WarningException(error);
@@ -438,7 +438,7 @@ struct AESEAXPlugin : IPlugin
 	}
 
 private:
-	static bool SetLastError(char *error)
+	static bool SetLastError(const char *error)
 	{
 		vnclog.Print(0, _T("AESEAXPlugin: %s\n"), error);
 		throw WarningException(error);

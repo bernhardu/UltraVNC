@@ -522,7 +522,7 @@ private:
 		}
 	}
 
-	bool SetLastError(char *error, HRESULT hr = S_OK)
+	bool SetLastError(const char *error, HRESULT hr = S_OK)
 	{
 		if (hr != S_OK)
 		{
@@ -597,7 +597,7 @@ struct TLSPlugin : public IPlugin
 	}
 
 private:
-	static bool SetLastError(char *error)
+	static bool SetLastError(const char *error)
 	{
 		vnclog.Print(0, _T("TLSPlugin: %s\n"), error);
 		throw WarningException(error);
@@ -645,7 +645,7 @@ static bool GetCertificateThumbprint(PCCERT_CONTEXT pCert, char *hex, int hexsiz
 void ClientConnection::AuthVeNCrypt()
 {
 	int version, temp, size, subType;
-	auto SetLastError = [](char *error)
+	auto SetLastError = [](const char *error)
 	{
 		vnclog.Print(0, _T("AuthVeNCrypt: %s\n"), error);
 		throw WarningException(error);
