@@ -3990,7 +3990,7 @@ void ClientConnection::SizeWindow(bool noPosChange, bool noSizeChange)
 	m_winwidth  = min(m_fullwinwidth,  workwidth);
 	//m_winheight = min(m_fullwinheight+m_TBr.bottom + m_TBr.top+16 , workheight);
 	if (m_opts->m_ShowToolbar)
-		m_winheight = min(m_fullwinheight + m_TBr.bottom + m_TBr.top , workheight);
+		m_winheight = min<int>(m_fullwinheight + m_TBr.bottom + m_TBr.top , workheight);
 	else
 		m_winheight = min(m_fullwinheight, workheight);
 	int temp_x = 0;

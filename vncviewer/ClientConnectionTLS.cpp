@@ -83,9 +83,9 @@ struct DynBuffer
 
 	inline BYTE *GetTail() { return buffer + size; }
 
-	inline int GetAvailable() { return max(size - pos, 0); }
+	inline int GetAvailable() { return std::max<int>(size - pos, 0); }
 
-	inline int GetFree() { return max(capacity - size, 0); }
+	inline int GetFree() { return std::max<int>(capacity - size, 0); }
 };
 
 // Schannel based TLS wrapper implemented as a "Sans I/O" protocol

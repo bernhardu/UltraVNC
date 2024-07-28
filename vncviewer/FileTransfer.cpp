@@ -1902,7 +1902,7 @@ void FileTransfer::SetStatus(LPSTR szStatus)
         DrawText(hdc, szHist, -1, &rc, DT_CALCRECT|DT_SINGLELINE);
         ReleaseDC(cbi.hwndList, hdc);
         int dx = rc.right - rc.left;
-        m_maxHistExtent = max(m_maxHistExtent, dx);
+        m_maxHistExtent = std::max(m_maxHistExtent, dx);
         SendDlgItemMessage(hWnd, IDC_HISTORY_CB, CB_SETHORIZONTALEXTENT, m_maxHistExtent, 0L);
     }
 	LRESULT Index = SendMessage(GetDlgItem(hWnd, IDC_HISTORY_CB), CB_ADDSTRING, 0, (LPARAM)szHist); 
