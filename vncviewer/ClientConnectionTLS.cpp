@@ -371,12 +371,14 @@ struct TLSSession
 			{
 			case SEC_E_OK:
 				break;
-			case SEC_I_RENEGOTIATE:
+			case SEC_I_RENEGOTIATE: {
 				state = StateHandshakeStart;
-				if (!Handshake(DynBuffer(), outbuf))
+				DynBuffer tmp_buffer;
+				if (!Handshake(tmp_buffer, outbuf))
 					return false;
 				done = true;
 				break;
+			}
 			case SEC_I_CONTEXT_EXPIRED:
 				state = StateShutdown;
 				done = true;
