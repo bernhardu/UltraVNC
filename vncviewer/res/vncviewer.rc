@@ -90,9 +90,9 @@ IDB_SWITCHMONITOR       BITMAP                  "stat/switch.bmp"
 
 IDB_EXPAND              BITMAP                  "down.bmp"
 
-IDB_CHAT                BITMAP                  "stat\\chat.bmp"
+IDB_CHAT                BITMAP                  "stat/chat.bmp"
 
-IDB_FT                  BITMAP                  "stat\\FT.bmp"
+IDB_FT                  BITMAP                  "stat/FT.bmp"
 
 
 #ifdef APSTUDIO_INVOKED
