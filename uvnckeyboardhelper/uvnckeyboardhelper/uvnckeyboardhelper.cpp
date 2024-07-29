@@ -596,6 +596,8 @@ DWORD WINAPI Cadthread(LPVOID lpParam)
 				DESKTOP_SWITCHDESKTOP | GENERIC_WRITE);
 		SetThreadDesktop(inputdesktop);
 		DWORD yerror= GetLastError();
+		int counter = 0;
+		DWORD dwEvent = 0;
 
 		comm_serv keyEventFn;
 		comm_serv StopeventFn;
@@ -605,7 +607,7 @@ DWORD WINAPI Cadthread(LPVOID lpParam)
 		if (!StarteventFn.Init("start_event",1,1,false,false)) goto error;
 		HANDLE Events_ini[1];
 		Events_ini[0]=StarteventFn.GetEvent();
-		DWORD dwEvent = WaitForMultipleObjects(1,Events_ini,FALSE,5000);
+		dwEvent = WaitForMultipleObjects(1,Events_ini,FALSE,5000);
 		switch(dwEvent)
 				{
 					case WAIT_OBJECT_0 + 0:
@@ -622,10 +624,9 @@ DWORD WINAPI Cadthread(LPVOID lpParam)
 		Events[0]=keyEventFn.GetEvent();
 		Events[1]=StopeventFn.GetEvent();
 		Events[2]=StarteventFn.GetEvent();
-		int counter=0;
 		while (true)
 		{
-		DWORD dwEvent = WaitForMultipleObjects(3,Events,FALSE,1000);
+		dwEvent = WaitForMultipleObjects(3,Events,FALSE,1000);
 		switch(dwEvent)
 				{
 					case WAIT_OBJECT_0 + 0: 

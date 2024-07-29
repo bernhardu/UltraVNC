@@ -390,6 +390,12 @@ DWORD WINAPI do_repeater(LPVOID lpParam)
 		Servers[server_nummer].size_buffer=0;
 		LogStats_viewer(code,server_nummer);
 	}
+
+	DWORD start=0;
+	DWORD stop=0;
+	int measure_counter=0;
+	long temp_bytes=0;
+
 	if ( 0 < lbuf_len ) {
 	    if (inout->server) len = send(remote, lbuf, lbuf_len, 0);
 		else len = send(local_in, lbuf, lbuf_len, 0);
@@ -414,10 +420,6 @@ DWORD WINAPI do_repeater(LPVOID lpParam)
     ofds = FD_ALLOC(nfds);
     f_local = 1;				/* yes, read from local */
     f_remote = 1;				/* yes, read from remote */
-	DWORD start=0;
-	DWORD stop=0;
-	int measure_counter=0;
-	long temp_bytes=0;
 
     while ( f_local || f_remote ) {
 	if (measure_counter==0) start=timeGetTime();
