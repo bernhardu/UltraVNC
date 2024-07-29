@@ -27,7 +27,7 @@
 
 //ldapAuth9x.cpp
 
-#include "ldapauth9x.h"
+#include "ldapAuth9x.h"
 
 /////////////////////////
 

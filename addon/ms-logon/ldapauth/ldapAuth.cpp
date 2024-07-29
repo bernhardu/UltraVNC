@@ -25,7 +25,7 @@
 // /macine-vnc Greg Wood (wood@agressiv.com)
 
 
-#include "ldapauth.h"
+#include "ldapAuth.h"
 
 /////////////////////////
 

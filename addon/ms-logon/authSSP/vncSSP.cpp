@@ -34,7 +34,7 @@
 #define ViewOnly 0x0001
 #define Interact 0x0002
 
-#include "../../../winvnc/winvnc/localization.h" // Act : add localization on messages
+#include "../../../winvnc/winvnc/Localization.h" // Act : add localization on messages
 
 CheckUserPasswordSDFn CheckUserPasswordSD = 0;
 

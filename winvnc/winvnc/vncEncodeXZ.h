@@ -27,7 +27,7 @@
 #ifndef _WINVNC_ENCODEXZ
 #define _WINVNC_ENCODEXZ
 
-#include "vncEncoder.h"
+#include "vncencoder.h"
 
 namespace rdr { class xzOutStream; class MemOutStream; }
 

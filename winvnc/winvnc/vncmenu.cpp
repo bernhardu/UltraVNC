@@ -54,7 +54,7 @@
 // [v1.0.2-jp1 fix]
 #pragma comment(lib, "imm32.lib")
 #endif
-#include <WtsApi32.h>
+#include <wtsapi32.h>
 #pragma comment(lib, "Dwmapi.lib")
 
 // adzm 2009-07-05 - Tray icon balloon tips

@@ -1,5 +1,5 @@
 #include "UdpEchoServer.h"
-#include <WinSock2.h>
+#include <winsock2.h>
 #include <thread>
 
 std::atomic<bool> g_stopServer(false);

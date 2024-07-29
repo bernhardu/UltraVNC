@@ -42,7 +42,7 @@
 #include <math.h>
 #include <objbase.h>
 #include <activeds.h>
-#include <Dsgetdc.h>
+#include <dsgetdc.h>
 #include <sddl.h>
 #include <assert.h>
 

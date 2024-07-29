@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include "resource.h"
+#include "Resource.h"
 #include <sddl.h>
 #pragma warning (disable:6387)
 #include <shellapi.h>
