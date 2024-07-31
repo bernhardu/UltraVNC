@@ -386,7 +386,7 @@ mn_encode (void *src, int srcsize, char *dest, int destsize, char *format)
   int n;
   char *fmt;
   char *destend = dest + destsize;
-  char *word;
+  const char *word;
   char capitalword[16];
   char *capitalwordPtr;
   memset(capitalword, 0, 16);
