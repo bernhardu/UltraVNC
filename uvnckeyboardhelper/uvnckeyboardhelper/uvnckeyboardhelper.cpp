@@ -666,7 +666,8 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 		DWORD dwTId;
 		ThreadHandle2 = CreateThread(NULL, 0, Cadthread, NULL, 0, &dwTId);
 		WaitForSingleObject(ThreadHandle2,INFINITE);
-		CloseHandle(ThreadHandle2);		
+		CloseHandle(ThreadHandle2);
+		return 0;
 }
 
 
