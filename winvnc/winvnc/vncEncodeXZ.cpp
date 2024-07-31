@@ -104,7 +104,7 @@ vncEncodeXZ::~vncEncodeXZ()
 {
 	delete mos;
 	delete xzos;
-	delete [] beforeBuf;
+	delete [] (rdr::U32*)beforeBuf;
 }
 
 void vncEncodeXZ::Init()
