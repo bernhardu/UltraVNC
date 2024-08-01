@@ -156,3 +156,6 @@ UltraVNCManager/__astcache/
 *.~18~
 UltraVNCManager/__history/
 UltraVNCManager/Win32/
+addon/eventMessageLogger/MSG00001.bin
+addon/ms-logon/authSSP/buildtime.h
+addon/ms-logon/MSLogonACL/buildtime.h
