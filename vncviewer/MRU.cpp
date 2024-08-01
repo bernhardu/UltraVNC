@@ -37,7 +37,7 @@
 static const TCHAR * INDEX_VAL_NAME = _T("index");
 static const TCHAR * RESERVED_CHARS = _T("[;");  //String of characters that will cause a key/value line to be parsed differently if set as a key
 static const TCHAR FIRST_USEABLE_ID = _T('A');
-static const TCHAR LAST_USEABLE_ID = _T('~');
+static const TCHAR * LAST_USEABLE_ID = _T("~");
 static const int MRU_MAX_ITEM_LENGTH = 256;
 
 MRU::MRU(LPTSTR keyname, unsigned int maxnum)
@@ -83,10 +83,10 @@ void MRU::AddItem(LPTSTR txt)
     }
 
     // Find first available unused id
-    while ((_tcschr(m_index, _totupper(firstUnusedId)) != NULL || _tcschr(RESERVED_CHARS, firstUnusedId) != NULL) && _tcscmp(&firstUnusedId, &LAST_USEABLE_ID) <= 0)
+    while ((_tcschr(m_index, _totupper(firstUnusedId)) != NULL || _tcschr(RESERVED_CHARS, firstUnusedId) != NULL) && _tcscmp(&firstUnusedId, LAST_USEABLE_ID) <= 0)
         firstUnusedId++;
     // If we've run out of unused ids, use the last one in the index and then remove it from the end.
-    if (_tcscmp(&firstUnusedId, &LAST_USEABLE_ID) > 0) {
+    if (_tcscmp(&firstUnusedId, LAST_USEABLE_ID) > 0) {
         firstUnusedId = id;
         m_index[_tcslen(m_index) - 1] = _T('\0');    
     }
