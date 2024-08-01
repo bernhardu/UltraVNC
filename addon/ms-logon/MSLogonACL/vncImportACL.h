@@ -27,7 +27,9 @@
 /*
  * vncImportACL.h: 
  */
+#ifndef _WIN32_WINNT
 #define _WIN32_WINNT	0x0500	//??
+#endif
 #define WINVER		0x0500	//??
 
 #include <windows.h>
