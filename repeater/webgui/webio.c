@@ -268,7 +268,7 @@ another_state:
          {
             int   contentRx;
 
-            contentRx = sess->ws_rxsize - (data - sess->ws_rxbuf);
+            contentRx = sess->ws_rxsize - (int)(data - sess->ws_rxbuf);
 
             if((contentRx >= sess->ws_contentLength) ||
                (error == ENOTCONN))
@@ -747,7 +747,7 @@ readmore:
 
          if(ssi_end)
          {
-            int ssi_len = (ssi_end - &fi->wf_data[len]) + 3;
+            int ssi_len = (int)(ssi_end - &fi->wf_data[len]) + 3;
 
             fi->wf_nextbuf = len;      /* Set address of SSI text */
 
