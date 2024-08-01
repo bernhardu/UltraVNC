@@ -2022,7 +2022,7 @@ void ClientConnection::Connect(bool cloud)
 
 		if (IsIpv6)
 		{
-			if (m_sock != NULL && m_sock != INVALID_SOCKET) closesocket(m_sock);
+			if (m_sock != 0 && m_sock != INVALID_SOCKET) closesocket(m_sock);
 			m_sock = socket(PF_INET6, SOCK_STREAM, 0);
 			if (m_sock == INVALID_SOCKET && !IsIpv4) {
 				if (m_hwndStatus)SetDlgItemText(m_hwndStatus, IDC_STATUS, sz_L44);
@@ -2076,7 +2076,7 @@ void ClientConnection::Connect(bool cloud)
 		if (IsIpv4)
 		{
 			int res;
-			if (m_sock != NULL && m_sock != INVALID_SOCKET) closesocket(m_sock);
+			if (m_sock != 0 && m_sock != INVALID_SOCKET) closesocket(m_sock);
 			m_sock = socket(PF_INET, SOCK_STREAM, 0);
 			if (m_sock == INVALID_SOCKET) {
 				if (m_hwndStatus)SetDlgItemText(m_hwndStatus, IDC_STATUS, sz_L44);
@@ -2325,7 +2325,7 @@ void ClientConnection::ConnectProxy()
 
 		if (IsIpv6)
 		{
-			if (m_sock != NULL && m_sock != INVALID_SOCKET) closesocket(m_sock);
+			if (m_sock != 0 && m_sock != INVALID_SOCKET) closesocket(m_sock);
 			m_sock = socket(PF_INET6, SOCK_STREAM, 0);
 			if (m_sock == INVALID_SOCKET && !IsIpv4) {
 				if (m_hwndStatus)SetDlgItemText(m_hwndStatus, IDC_STATUS, sz_L44);
@@ -2373,7 +2373,7 @@ void ClientConnection::ConnectProxy()
 		if (IsIpv4)
 		{
 			int res;
-			if (m_sock != NULL && m_sock != INVALID_SOCKET) closesocket(m_sock);
+			if (m_sock != 0 && m_sock != INVALID_SOCKET) closesocket(m_sock);
 			m_sock = socket(PF_INET, SOCK_STREAM, 0);
 			if (m_sock == INVALID_SOCKET) {
 				if (m_hwndStatus)SetDlgItemText(m_hwndStatus, IDC_STATUS, sz_L44);
