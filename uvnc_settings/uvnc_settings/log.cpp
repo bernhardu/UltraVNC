@@ -120,6 +120,6 @@ debug( const char *fmt, ... )
 	sprintf(myoutput2, "> ");
 	vsprintf( myoutput, fmt, args );
 	va_end( args );
-	strncat(myoutput2,myoutput,strlen(myoutput));
+	strncat_s(myoutput2,sizeof(myoutput2),myoutput,strlen(myoutput));
 	win_log(myoutput2);
 }
