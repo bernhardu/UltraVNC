@@ -38,6 +38,8 @@
 #include <windows.h>
 
 #include <string>
+#include <locale>
+#include <codecvt>
 
 #include <rdr/MemInStream.h>
 #include <rdr/ZlibOutStream.h>
@@ -749,7 +751,8 @@ bool Clipboard::UpdateClipTextEx(ClipboardData& clipboardData, CARD32 overrideFl
 
 				if (nFinalConvertedSize > 0) {
 					std::wstring wstrClipboard(clipStr);
-					m_strLastCutText.assign(wstrClipboard.begin(), wstrClipboard.end());
+					std::wstring_convert<std::codecvt_utf8<wchar_t>> conv;
+					m_strLastCutText = conv.to_bytes(wstrClipboard);
 				}
 
 				delete[] clipStr;
