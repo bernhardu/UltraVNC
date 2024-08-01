@@ -38,13 +38,13 @@ vncImportACL::~vncImportACL(){
 	ACE_DATA *tmp = NULL;
 	for (ACE_DATA *i = lastDenyACE; i != NULL; i = tmp){
 		if (i->pSID)
-			delete i->pSID;
+			delete [] (TCHAR*)i->pSID;
 		tmp = i->next;
 		delete i;
 	}
 	for (ACE_DATA *j = lastAllowACE; j != NULL; j = tmp){
 		if (j->pSID)
-			delete j->pSID;
+			delete [] (TCHAR*)j->pSID;
 		tmp = j->next;
 		delete j;
 	}
@@ -145,7 +145,7 @@ PSID vncImportACL::CopySID(PSID pSID){
 
 	if (IsValidSid(pSID)){
 		sidLength = GetLengthSid(pSID);
-		pNewSID = (PSID) new char[sidLength];
+		pNewSID = (PSID) new TCHAR[sidLength];
 		CopySid(sidLength, pNewSID, pSID);
 	}
 	return pNewSID;
@@ -334,14 +334,14 @@ PSID vncImportACL::GetSID(const TCHAR *domainaccount){
 	// Sets pSid and domain size
 	LookupAccountName(NULL, domainaccount, pSid, &ulSidLen,
 		domain, &ulDomLen, &peUse);
-	pSid = (PSID)new TCHAR[ulSidLen];
+	pSid = (PSID) new TCHAR[ulSidLen];
 	domain = new TCHAR[ulDomLen];
 	LookupAccountName(NULL, domainaccount,
 		pSid, &ulSidLen, domain, &ulDomLen, &peUse);
 	if (!IsValidSid(pSid)){
 		_ftprintf(stderr, _T("%s: SID not valid.\n"), domainaccount);
-		delete [] pSid;
-				pSid = NULL;
+		delete [] (TCHAR*)pSid;
+		pSid = NULL;
 	}
 	delete [] domain;
 
