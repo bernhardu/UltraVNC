@@ -22,6 +22,7 @@ extern int WI_NOBLOCKSOCK(long sock);
 
 
 
+#if !defined(EWOULDBLOCK)
 #define EWOULDBLOCK             WSAEWOULDBLOCK
 #define EINPROGRESS             WSAEINPROGRESS
 #define EALREADY                WSAEALREADY
@@ -49,6 +50,7 @@ extern int WI_NOBLOCKSOCK(long sock);
 #define ETOOMANYREFS            WSAETOOMANYREFS
 #define ETIMEDOUT               WSAETIMEDOUT
 #define ECONNREFUSED            WSAECONNREFUSED
+#endif
 
 #endif /* _WINDOWDEFS_H_ */
 
