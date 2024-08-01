@@ -42,6 +42,8 @@
 
 #include <signal.h>
 
+ZCONST ulg near *get_crc_table_unzip OF((void));
+
 #define MAXCOM 256      /* Maximum one-line comment size */
 
 

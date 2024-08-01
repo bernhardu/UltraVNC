@@ -45,6 +45,8 @@ typedef struct zdirscan {
 #include "../win32/win32zip.h"
 #include "../win32/nt.h"
 
+extern int __far __cdecl printff(const char *format, ...);
+
 /* Local functions */
 local zDIRSCAN        * OpenDirScan      OF((ZCONST char *n));
 local struct zdirscan * GetNextDirEntry  OF((zDIRSCAN *d));

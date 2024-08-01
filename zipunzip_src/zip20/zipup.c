@@ -112,6 +112,9 @@
 #  include "theos/zipup.h"
 #endif
 
+extern ulg deflate_copy();
+extern ulg crc32_unzip(register ulg crc, register ZCONST uch *buf, extent len);
+
 /* Local functions */
 #ifndef RISCOS
    local int suffixes OF((char *, char *));

@@ -289,6 +289,7 @@ static ZCONST char Far UnsupportedExtraField[] =
 static ZCONST char Far BadExtraFieldCRC[] =
   "error [%s]:  bad extra-field CRC %08lx (should be %08lx)\n";
 
+extern int inflate_copy(Uz_Globs *, int);
 
 
 
