@@ -227,7 +227,6 @@ SOURCES += \
     \winvnc\winvnc\rfbUpdateTracker.cpp \
     \winvnc\winvnc\ScreenCapture.cpp \
     \winvnc\winvnc\ScSelect.cpp \
-    \winvnc\winvnc\service.cpp \
     \winvnc\winvnc\SettingsManager.cpp \
     \winvnc\winvnc\stdhdrs.cpp \
     \winvnc\winvnc\tableinitcmtemplate.cpp \
