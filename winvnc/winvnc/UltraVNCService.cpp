@@ -29,6 +29,7 @@
 #include "inifile.h"
 #include "UltraVNCService.h"
 #include <userenv.h>
+#include <VersionHelpers.h>
 
 
 
@@ -348,10 +349,7 @@ BOOL UltraVNCService::CreateServiceSafeBootKey()
 ////////////////////////////////////////////////////////////////////////////////
 void UltraVNCService::Set_Safemode()
 {
-	OSVERSIONINFO OSversion;	
-	OSversion.dwOSVersionInfoSize=sizeof(OSVERSIONINFO);
-	GetVersionEx(&OSversion);
-	if(OSversion.dwMajorVersion<6)
+	if(!IsWindowsVistaOrGreater())
 			{
 					char drivepath[150];
 					char systemdrive[150];
@@ -506,10 +504,7 @@ BOOL UltraVNCService::Force_reboot()
 			tkp.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED; 
 			if(AdjustTokenPrivileges(    hToken,  FALSE,  & tkp,  0,  (PTOKEN_PRIVILEGES)NULL,  0))
 				{
-					OSVERSIONINFO OSversion;	
-					OSversion.dwOSVersionInfoSize=sizeof(OSVERSIONINFO);
-					GetVersionEx(&OSversion);
-					if(OSversion.dwMajorVersion<6)
+					if (!IsWindowsVistaOrGreater())
 					{
 					ExitWindowsEx(EWX_REBOOT|EWX_FORCEIFHUNG, 0);
 					}
@@ -589,10 +584,7 @@ BOOL UltraVNCService::DeleteServiceSafeBootKey()
 
 void UltraVNCService::Restore_safemode()
 {
-	OSVERSIONINFO OSversion;	
-	OSversion.dwOSVersionInfoSize=sizeof(OSVERSIONINFO);
-	GetVersionEx(&OSversion);
-	if(OSversion.dwMajorVersion<6)
+	if(!IsWindowsVistaOrGreater())
 		{
 			char drivepath[150];
 			char systemdrive[150];
@@ -781,9 +773,6 @@ bool UltraVNCService::IsAnyRDPSessionActive()
 
 int UltraVNCService::createWinvncExeCall(bool preconnect, bool rdpselect)
 {
-	OSVERSIONINFO OSversion;
-	OSversion.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
-	GetVersionEx(&OSversion);
 	char exe_file_name[MAX_PATH];
 	char cmdline[MAX_PATH];
 	GetModuleFileName(0, exe_file_name, MAX_PATH);

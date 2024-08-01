@@ -53,10 +53,10 @@ BOOL APIENTRY DllMain( HANDLE hModule,
 LDAPAUTH9X_API
 BOOL CUGP(char * userin,char *password,char *machine, char * groupin,int locdom)
 {
-        OSVERSIONINFO ovi = { sizeof ovi };
-        GetVersionEx( &ovi );
+        //OSVERSIONINFO ovi = { sizeof ovi };
+        //GetVersionEx( &ovi );
         //if (ovi.dwPlatformId == VER_PLATFORM_WIN32_NT &&
-    //  ovi.dwMajorVersion >= 5 )
+        //    ovi.dwMajorVersion >= 5 )
         if ( 5 >= 5 )
         {
         //Handle the command line arguments.

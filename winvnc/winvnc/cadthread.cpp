@@ -27,6 +27,7 @@
 #include "Localization.h"
 #include "SettingsManager.h"
 #include "credentials.h"
+#include <VersionHelpers.h>
 
 vncCad::vncCad()
 {
@@ -34,10 +35,9 @@ vncCad::vncCad()
 
 bool vncCad::ISUACENabled()
 {
-	OSVERSIONINFO OSversion;
-	OSversion.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
-	GetVersionEx(&OSversion);
-	if (OSversion.dwMajorVersion < 6) return false;
+	if (!IsWindowsVistaOrGreater())
+		return false;
+
 	HKEY hKey;
 	if (::RegOpenKeyW(HKEY_LOCAL_MACHINE, L"Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System", &hKey) == ERROR_SUCCESS) {
 		DWORD value = 0;
@@ -90,10 +90,8 @@ void vncCad::delete_softwareCAD()
 
 void vncCad::delete_softwareCAD_elevated()
 {
-	OSVERSIONINFO OSversion;
-	OSversion.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
-	GetVersionEx(&OSversion);
-	if (OSversion.dwMajorVersion < 6) return;
+	if (!IsWindowsVistaOrGreater())
+		return;
 
 	char exe_file_name[MAX_PATH];
 	GetModuleFileName(0, exe_file_name, MAX_PATH);
@@ -112,11 +110,9 @@ void vncCad::delete_softwareCAD_elevated()
 
 void vncCad::Enable_softwareCAD_elevated()
 {
-	OSVERSIONINFO OSversion;
-	OSversion.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
-	GetVersionEx(&OSversion);
-	if (OSversion.dwMajorVersion < 6)
+	if (!IsWindowsVistaOrGreater())
 		return;
+
 	char exe_file_name[MAX_PATH];
 	GetModuleFileName(0, exe_file_name, MAX_PATH);
 	SHELLEXECUTEINFO shExecInfo;
@@ -134,10 +130,8 @@ void vncCad::Enable_softwareCAD_elevated()
 
 bool vncCad::IsSoftwareCadEnabled()
 {
-	OSVERSIONINFO OSversion;
-	OSversion.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
-	GetVersionEx(&OSversion);
-	if (OSversion.dwMajorVersion < 6) return true;
+	if (!IsWindowsVistaOrGreater())
+		return true;
 
 	HKEY hkLocal, hkLocalKey;
 	DWORD dw;
@@ -194,11 +188,8 @@ DWORD WINAPI vncCad::Cadthread(LPVOID lpParam)
 	HDESK old_desktop = GetThreadDesktop(GetCurrentThreadId());
 	SetThreadDesktop(desktop);
 
-	OSVERSIONINFO OSversion;
-	OSversion.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
-	GetVersionEx(&OSversion);
 	//
-	if (OSversion.dwMajorVersion >= 6 && settings->RunningFromExternalService() && !IsSoftwareCadEnabled()) {
+	if (IsWindowsVistaOrGreater() && settings->RunningFromExternalService() && !IsSoftwareCadEnabled()) {
 		DWORD result = MessageBoxSecure(NULL, "UAC is Disable, make registry changes to allow cad", "Warning", MB_YESNO);
 		if (result == IDYES) {
 			DesktopUsersToken desktopUsersToken;
@@ -234,7 +225,7 @@ DWORD WINAPI vncCad::Cadthread(LPVOID lpParam)
 gotome:
 
 	//Tell service to call sendSas()
-	if (OSversion.dwMajorVersion >= 6) {
+	if (IsWindowsVistaOrGreater()) {
 		if (hShutdownEventcad == NULL)
 			hShutdownEventcad = OpenEvent(EVENT_MODIFY_STATE, FALSE, "Global\\SessionEventUltraCad");
 		if (hShutdownEventcad != NULL)
