@@ -41,7 +41,7 @@
 
 //	[v1.0.2-jp1 fix]
 LRESULT CALLBACK SBProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-LONG pDefSBProc=NULL;
+LONG_PTR pDefSBProc=NULL;
 extern HINSTANCE	hInstResDLL;
 
 extern HINSTANCE	hAppInstance;
