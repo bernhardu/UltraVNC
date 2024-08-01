@@ -94,11 +94,11 @@ static BOOL Initialize(VOID)
     hMutex = CreateMutex(NULL, TRUE, NULL);
     if(hMutex == NULL) return FALSE;
 
-    hOldMutex = (HANDLE)InterlockedExchange((LPLONG)&hInitMutex, (LONG)hMutex);
+    hOldMutex = (HANDLE)InterlockedExchangePointer(&hInitMutex, hMutex);
 
     if(hOldMutex != NULL) {
         /* somebody setup the mutex already */
-        InterlockedExchange((LPLONG)&hInitMutex, (LONG)hOldMutex);
+        InterlockedExchangePointer(&hInitMutex, hOldMutex);
 
         CloseHandle(hMutex); /* close new, un-needed mutex */
 
