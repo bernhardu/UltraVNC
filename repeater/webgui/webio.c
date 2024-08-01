@@ -157,9 +157,11 @@ wi_poll()
       }
    }
    wi_highsocket++;     /* Select mumbo-jumbo */
+   if (wi_highsocket > MAXINT)
+       wi_highsocket = MAXINT;
 
    /* See if any of the sockets have input or ready to send */
-   sessions = select( wi_highsocket, &sel_recv, &sel_send, &sel_except, &wi_seltmo);
+   sessions = select( (int)wi_highsocket, &sel_recv, &sel_send, &sel_except, &wi_seltmo);
    if(sessions == SOCKET_ERROR)
    {
       error = errno;

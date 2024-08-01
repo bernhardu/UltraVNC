@@ -80,13 +80,9 @@ extern u_long cticks;
 
 /*********** Network portability ***************/
 
+typedef SOCKET socktype;
 
-#ifdef BUSTER
-extern   int      WI_NOBLOCKSOCK(long sock);
-#endif  /* BUSTER or not */
-
-typedef long socktype;
-
+extern int WI_NOBLOCKSOCK(socktype sock);
 
 /*********** File system mapping ***************/
 

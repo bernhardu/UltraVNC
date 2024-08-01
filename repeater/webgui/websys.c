@@ -34,7 +34,7 @@
 
 #ifdef _WINSOCKAPI_
 int 
-WI_NOBLOCKSOCK(long sock)
+WI_NOBLOCKSOCK(socktype sock)
 {
    int   err;
    int   option = TRUE;

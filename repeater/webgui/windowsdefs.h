@@ -13,7 +13,6 @@
 #pragma warning(disable: 4055 )
 
 #include <winsock.h>
-extern int WI_NOBLOCKSOCK(long sock);
 
 #ifdef errno
 #undef errno
