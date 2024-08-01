@@ -157,9 +157,9 @@ static void maskDOSdevice   (__GPRO__ char *pathcomp);
 static void map2fat         (char *pathcomp, char **pEndFAT);
 
 
-#ifdef __MINGW32__
-   int _CRT_glob = 0;   /* suppress command line globbing by C RTL */
-#endif
+//#ifdef __MINGW32__
+//   int _CRT_glob = 0;   /* suppress command line globbing by C RTL */
+//#endif
 
 #ifdef ACORN_FTYPE_NFS
 /* Acorn bits for NFS filetyping */
