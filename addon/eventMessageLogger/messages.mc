@@ -24,7 +24,7 @@
 
 
 FacilityNames=( MY_PROGS=100 )
-MessageID=1
+MessageId=1
 Facility=MY_PROGS
 SymbolicName=MY_MSG1
 Language=English
@@ -33,7 +33,7 @@ Language=English
 .
 
 FacilityNames=( MY_PROGS=100 )
-MessageID=2
+MessageId=2
 Facility=MY_PROGS
 SymbolicName=MY_MSG2
 Language=English
@@ -42,7 +42,7 @@ Language=English
 .
 
 FacilityNames=( MY_PROGS=100 )
-MessageID=3
+MessageId=3
 Facility=MY_PROGS
 SymbolicName=MY_MSG3
 Language=English
