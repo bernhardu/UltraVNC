@@ -1471,7 +1471,7 @@ void ClientConnection::CreateDisplay()
 
 		AppendMenu(hsysmenu, MF_SEPARATOR, NULL, NULL);
 
-#pragma message("TODO - Localize these new menu strings!")
+//#pragma message("TODO - Localize these new menu strings!")
 
 		// adzm - 2010-07 - Extended clipboard
 
