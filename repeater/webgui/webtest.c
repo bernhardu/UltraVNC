@@ -604,7 +604,9 @@ testaction_cgi(wi_sess * sess,  EOFILE * eofile)
 
 	char *   id_on;
 	char *   id_con;
+#ifndef _DEBUG
 	char *	 web_port;
+#endif
 
 
 

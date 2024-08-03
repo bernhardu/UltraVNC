@@ -8746,7 +8746,7 @@ LRESULT CALLBACK ClientConnection::WndProc(HWND hwnd, UINT iMsg, WPARAM wParam, 
 						try {
 							void *p;
 							_this->join(&p);  // After joining, _this is no longer valid
-						} catch (omni_thread_invalid& e) {
+						} catch (omni_thread_invalid&) {
 							// The thread probably hasn't been started yet,
 						}
 
@@ -9501,7 +9501,7 @@ LRESULT CALLBACK ClientConnection::WndProchwnd(HWND hwnd, UINT iMsg, WPARAM wPar
 				  try {
 				  void *p;
 				  _this->join(&p);  // After joining, _this is no longer valid
-				  } catch (omni_thread_invalid& e) {
+				  } catch (omni_thread_invalid&) {
 				  // The thread probably hasn't been started yet,
 				  }*/
 
