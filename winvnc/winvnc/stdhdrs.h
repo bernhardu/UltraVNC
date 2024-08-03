@@ -114,11 +114,7 @@ extern VNCLog vnclog;
 #define VNCLOG(s)	((std::string() + __FUNCTION__ + " : " + (s)).c_str())
 #endif
 //#if MSC_VER > 12
-#ifndef _X64
-#pragma comment(linker,"/manifestdependency:\"type='Win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='X86' publicKeyToken='6595b64144ccf1df' language='*'\"")
-#else
-#pragma comment(linker,"/manifestdependency:\"type='Win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='amd64' publicKeyToken='6595b64144ccf1df' language='*'\"")
-#endif
+#pragma comment(linker,"/manifestdependency:\"type='Win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 //#endif
 //#define memcpy memcpy_amd
 //remove comment to compiler for >=athlon  or >=PIII
