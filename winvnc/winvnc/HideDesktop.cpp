@@ -46,7 +46,11 @@
 #include <shlwapi.h> // DLLVERSIONINFO
 #include "stdhdrs.h"
 
+#if defined(_MSC_VER)
 struct __declspec(uuid("F490EB00-1240-11D1-9888-006097DEACF9")) IActiveDesktop;
+#else
+struct IActiveDesktop;
+#endif
 
 #define PACKVERSION(major,minor) MAKELONG(minor,major)
 
