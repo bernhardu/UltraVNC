@@ -952,9 +952,9 @@ vncEncodeMgr::SetCompressLevel(int level)
 inline void
 vncEncodeMgr::SetQualityLevel(int level)
 {
-	m_qualitylevel = (level >= 0 && level <= 9) ? level : -1;
-	m_finequalitylevel = coarsequal2finequal[level];
-	m_subsampling = coarsequal2subsamp[level];
+	m_qualitylevel = (level >= 0 && level <= 9) ? level : 5;
+	m_finequalitylevel = coarsequal2finequal[m_qualitylevel];
+	m_subsampling = coarsequal2subsamp[m_qualitylevel];
 	if (m_encoder != NULL) {
 		m_encoder->SetQualityLevel(m_qualitylevel);
 		m_encoder->SetFineQualityLevel(m_finequalitylevel);
